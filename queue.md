@@ -5,11 +5,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 
 - [x] christiano-2017-deep-rl-preferences
 - [x] deng-2025-swe-bench-pro
-- [ ] raghavendra-2026-swe-atlas
-- [ ] sehwag-2026-scipredict
-- [ ] chiu-2025-morebench
-- [ ] bandi-2026-mcp-atlas
-- [ ] akyurek-2025-prbench
+- [x] raghavendra-2026-swe-atlas
+- [x] sehwag-2026-scipredict
+- [x] chiu-2025-morebench
+- [x] bandi-2026-mcp-atlas
+- [x] akyurek-2025-prbench
 - [ ] sharma-2025-researchrubrics
 - [ ] mazeika-2025-rli
 - [ ] rezaei-2025-onlinerubrics
