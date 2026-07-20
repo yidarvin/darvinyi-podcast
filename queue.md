@@ -55,11 +55,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] wang-2025-multifiletest
 - [x] kumar-2024-browserart
 - [x] chan-2024-synthetic-data
-- [ ] raghavendra-2024-superficial-alignment
-- [ ] wang-2024-plansearch
-- [ ] nath-2024-goal-conditioned
-- [ ] li-2024-wmdp
-- [ ] li-2024-multiturn-jailbreaks
-- [ ] levine-2023-reward-distribution-shift
-- [ ] pougue-biyong-2021-debagreement
-- [ ] pu-2023-peft-llms
+- [x] raghavendra-2024-superficial-alignment
+- [x] wang-2024-plansearch
+- [x] nath-2024-goal-conditioned
+- [x] li-2024-wmdp
+- [x] li-2024-multiturn-jailbreaks
+- [x] levine-2023-reward-distribution-shift
+- [x] pougue-biyong-2021-debagreement
+- [x] pu-2023-peft-llms
