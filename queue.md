@@ -173,11 +173,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] gururangan-2018-annotation-artifacts
 - [x] deng-2023-mind2web
 - [x] nie-2020-anli
-- [ ] perez-2022-red-teaming-with-lms
-- [ ] yao-2022-webshop
-- [ ] he-2024-olympiadbench
-- [ ] hendrycks-2021-apps
-- [ ] wang-2023-fair-evaluators
+- [x] perez-2022-red-teaming-with-lms
+- [x] yao-2022-webshop
+- [x] he-2024-olympiadbench
+- [x] hendrycks-2021-apps
+- [x] wang-2023-fair-evaluators
 - [ ] hsieh-2024-ruler
 - [ ] liu-2023-agentbench
 - [ ] chiang-2023-llm-eval
