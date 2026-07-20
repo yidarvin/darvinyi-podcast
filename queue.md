@@ -15,11 +15,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] rezaei-2025-onlinerubrics
 - [x] srinivasa-2025-tutorbench
 - [x] manglik-2026-insights-generator
-- [ ] tyagi-2026-pow3r
-- [ ] sehwag-2026-aspi
-- [ ] mahmoud-2026-reward-hacking
-- [ ] klearman-2026-semantic-stratification
-- [ ] elfeki-2026-hil-bench
+- [x] tyagi-2026-pow3r
+- [x] sehwag-2026-aspi
+- [x] mahmoud-2026-reward-hacking
+- [x] klearman-2026-semantic-stratification
+- [x] elfeki-2026-hil-bench
 - [ ] campbell-2026-defensive-refusal
 - [ ] zhang-2026-bio-uplift
 - [ ] ursekar-2026-vero
