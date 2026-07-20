@@ -108,11 +108,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] bellemare-2013-ale
 - [x] geirhos-2019-texture-bias
 - [x] caliskan-2017-weat
-- [ ] jimenez-2023-swe-bench
-- [ ] hessel-2021-clipscore
-- [ ] rein-2023-gpqa
-- [ ] chen-2015-coco-captions
-- [ ] wang-2019-superglue
+- [x] jimenez-2023-swe-bench
+- [x] hessel-2021-clipscore
+- [x] rein-2023-gpqa
+- [x] chen-2015-coco-captions
+- [x] wang-2019-superglue
 - [ ] torralba-2011-dataset-bias
 - [ ] lee-2018-mahalanobis-ood
 - [ ] srivastava-2022-big-bench
