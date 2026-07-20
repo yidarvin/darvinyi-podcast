@@ -158,11 +158,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] maynez-2020-faithfulness
 - [x] kornblith-2019-imagenet-transfer
 - [x] ribeiro-2020-checklist
-- [ ] bai-2023-longbench
-- [ ] ho-2020-2wikimultihopqa
-- [ ] fu-2024-video-mme
-- [ ] patil-2023-gorilla
-- [ ] corbett-davies-2017-cost-of-fairness
+- [x] bai-2023-longbench
+- [x] ho-2020-2wikimultihopqa
+- [x] fu-2024-video-mme
+- [x] patil-2023-gorilla
+- [x] corbett-davies-2017-cost-of-fairness
 - [ ] liu-2016-dialogue-eval-metrics
 - [ ] chiang-2024-chatbot-arena
 - [ ] min-2023-factscore
