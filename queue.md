@@ -10,11 +10,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] chiu-2025-morebench
 - [x] bandi-2026-mcp-atlas
 - [x] akyurek-2025-prbench
-- [ ] sharma-2025-researchrubrics
-- [ ] mazeika-2025-rli
-- [ ] rezaei-2025-onlinerubrics
-- [ ] srinivasa-2025-tutorbench
-- [ ] manglik-2026-insights-generator
+- [x] sharma-2025-researchrubrics
+- [x] mazeika-2025-rli
+- [x] rezaei-2025-onlinerubrics
+- [x] srinivasa-2025-tutorbench
+- [x] manglik-2026-insights-generator
 - [ ] tyagi-2026-pow3r
 - [ ] sehwag-2026-aspi
 - [ ] mahmoud-2026-reward-hacking
