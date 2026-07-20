@@ -183,11 +183,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] chiang-2023-llm-eval
 - [x] li-2023-bird
 - [x] mialon-2023-gaia
-- [ ] zhou-2023-ifeval
-- [ ] hendrycks-2020-ethics
-- [ ] trivedi-2021-musique
-- [ ] chan-2023-chateval
-- [ ] perez-2022-ignore-previous-prompt
+- [x] zhou-2023-ifeval
+- [x] hendrycks-2020-ethics
+- [x] trivedi-2021-musique
+- [x] chan-2023-chateval
+- [x] perez-2022-ignore-previous-prompt
 - [ ] dubois-2023-alpacafarm
 - [ ] perez-2022-model-written-evals
 - [ ] xie-2024-osworld
