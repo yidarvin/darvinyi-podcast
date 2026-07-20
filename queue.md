@@ -40,11 +40,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] knight-2025-fortress
 - [x] wang-2025-enigmaeval
 - [x] jensen-2025-cfpd
-- [ ] phan-2025-hle
-- [ ] sirdeshmukh-2025-multichallenge
-- [ ] zhang-2024-gsm1k
-- [ ] nath-2025-toolcomp
-- [ ] ren-2025-mask
+- [x] phan-2025-hle
+- [x] sirdeshmukh-2025-multichallenge
+- [x] zhang-2024-gsm1k
+- [x] nath-2025-toolcomp
+- [x] ren-2025-mask
 - [ ] slack-2023-holistic-eval
 - [ ] nath-2025-adaptive-guidance
 - [ ] kritz-2025-j2
