@@ -178,11 +178,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] he-2024-olympiadbench
 - [x] hendrycks-2021-apps
 - [x] wang-2023-fair-evaluators
-- [ ] hsieh-2024-ruler
-- [ ] liu-2023-agentbench
-- [ ] chiang-2023-llm-eval
-- [ ] li-2023-bird
-- [ ] mialon-2023-gaia
+- [x] hsieh-2024-ruler
+- [x] liu-2023-agentbench
+- [x] chiang-2023-llm-eval
+- [x] li-2023-bird
+- [x] mialon-2023-gaia
 - [ ] zhou-2023-ifeval
 - [ ] hendrycks-2020-ethics
 - [ ] trivedi-2021-musique
