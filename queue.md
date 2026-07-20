@@ -168,11 +168,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] min-2023-factscore
 - [x] mazeika-2024-harmbench
 - [x] dua-2019-drop
-- [ ] press-2022-compositionality-gap
-- [ ] zafar-2016-disparate-mistreatment
-- [ ] gururangan-2018-annotation-artifacts
-- [ ] deng-2023-mind2web
-- [ ] nie-2020-anli
+- [x] press-2022-compositionality-gap
+- [x] zafar-2016-disparate-mistreatment
+- [x] gururangan-2018-annotation-artifacts
+- [x] deng-2023-mind2web
+- [x] nie-2020-anli
 - [ ] perez-2022-red-teaming-with-lms
 - [ ] yao-2022-webshop
 - [ ] he-2024-olympiadbench
