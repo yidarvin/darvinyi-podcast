@@ -6,14 +6,19 @@ show:
   author: "Darvin Yi"
   link: "https://litsearch.darvinyi.com"
   language: "en-us"
-  image_url: ""          # optional: square 1400-3000px JPG/PNG URL for podcast apps
+  image_url: "https://pod.darvinyi.com/cover.jpg"   # square 1400-3000px; Apple REQUIRES this
   explicit: "false"
+  # Apple Podcasts (Podcasts Connect) required/recommended channel tags:
+  category: "Technology"        # Apple category list; e.g. Technology, Science, Education
+  type: "episodic"              # episodic | serial
+  owner_name: "Darvin Yi"       # Apple account owner (not shown in most apps)
+  owner_email: "yidarvin@gmail.com"   # Apple verification; visible in the raw feed XML
 
 publish:
   # Feed is served by the NAS over Tailscale — reachable everywhere as dodoland.
   # To use HTTPS or a public domain instead, see the options at the end of SETUP.md
   # and just change base_url here, then re-run make_feed + publish.
-  base_url: "http://dodoland:8091"            # matches nas/setup-nas.sh
+  base_url: "https://pod.darvinyi.com"        # Cloudflare tunnel -> Caddy on dodoland:8091 (HTTPS for Apple Podcasts)
   ssh_target: "dodoland"                      # Tailscale MagicDNS name (resolves on all devices)
   remote_dir: "/volume1/docker/podcast"       # matches nas/setup-nas.sh
 
