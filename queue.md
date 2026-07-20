@@ -133,11 +133,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] kleinberg-2016-inherent-tradeoffs
 - [x] liu-2020-energy-ood
 - [x] suzgun-2022-bbh
-- [ ] hendrycks-2021-imagenet-a
-- [ ] zhao-2021-calibrate
-- [ ] liu-2023-evalplus
-- [ ] yu-2018-spider
-- [ ] lin-2003-rouge-predecessor
+- [x] hendrycks-2021-imagenet-a
+- [x] zhao-2021-calibrate
+- [x] liu-2023-evalplus
+- [x] yu-2018-spider
+- [x] lin-2003-rouge-predecessor
 - [ ] sellam-2020-bleurt
 - [ ] wang-2024-mmlu-pro
 - [ ] qin-2023-toolllm
