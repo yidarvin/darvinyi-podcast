@@ -1,0 +1,83 @@
+---
+slug: fabbri-2025-multinrc
+title: "MultiNRC: A Challenging and Native Multilingual Reasoning Evaluation Benchmark for LLMs"
+description: "Scale AI built a reasoning benchmark from scratch in French, Spanish, and Chinese instead of translating English tests — and the best frontier model still can't clear forty-nine percent."
+date: 2026-07-19
+guest_name: "Julian"
+guest_voice: "bm_george"
+---
+[O] Here's the number that should worry every model provider claiming multilingual competence. On a brand new reasoning benchmark, the best model in the world scores forty-nine percent.
+[S] Not forty-nine percent on some near-impossible math olympiad. Forty-nine percent on questions native speakers wrote about their own language and culture — grammar, riddles, holidays, everyday math.
+[O] And every other model, all thirteen of them, falls short of that. Some of them badly short.
+[S] Which either means multilingual reasoning is genuinely broken, or somebody built a test that's rigged to be unbeatable. I have opinions about which.
+[O] Welcome to Litsearch Audio, where an optimist and a skeptic argue about a paper until someone changes their mind. I'm the optimist, and I think this benchmark exposes something real.
+[S] I'm the skeptic, and I think the headline number is doing more work than the paper's own methodology can support. We'll fight about it.
+[O] The paper is MultiNRC: A Challenging and Native Multilingual Reasoning Evaluation Benchmark for LLMs, from Alexander Fabbri, Diego Mares, Jorge Flores, Meher Mankikar, Ernesto Hernandez, Dean Lee, Bing Liu, and Chen Xing at Scale AI.
+[S] And joining us is Julian, who's spent time in the weeds of this dataset and how it was built.
+[G] Happy to be here. The short version of why this paper exists: almost every multilingual reasoning benchmark out there is English wearing a costume. This one tries to build something that was never English to begin with.
+[O] Julian, start with the gap. What was actually missing before this?
+[G] English reasoning evaluation is rich — GSM8K, MATH, MMLU-Pro, GPQA. The multilingual versions of that landscape are almost all translations. MGSM is GSM8K translated into ten languages. MMLU-ProX machine-translates MMLU-Pro into twenty-eight languages with expert review. BenchMAX does something similar with GPQA, using three native annotators per item to post-edit the machine translation.
+[S] So the questions get more languages, but the content stays fundamentally Anglophone.
+[G] Exactly. The entities, the units, the cultural assumptions all stay rooted in English-speaking contexts, just rendered in different words. A translated GSM8K problem never actually requires you to know how French gender agreement works, or what a Chengyu is, or when Día de la Candelaria falls.
+[O] What about benchmarks built from real, native-language exam questions? That seems like it would dodge the translation problem entirely.
+[G] That's the other common route, and the authors point to M3Exam as the example. The problem is those exams are mostly multiple-choice knowledge recall, not reasoning, and they're already close to solved — the paper cites GPT-4 results from 2023 showing they were too easy even then.
+[S] So you're stuck between two bad options. Translate English and you inherit English's cultural furniture. Use native exams and you get trivia, not reasoning.
+[G] Right, and that's the gap MultiNRC is aimed at — native reasoning, not translated reasoning and not memorized trivia.
+[O] So walk us through what they actually built.
+[G] MultiNRC, the Multilingual Native Reasoning Challenge, is one thousand fifty-five questions written from scratch by native speakers of French, Spanish, and Chinese. Three hundred thirty-eight French, three hundred ninety-two Spanish, three hundred twenty-five Chinese. Every question has a short, objective ground-truth answer, a word or a phrase, not an essay, which matters a lot for how they grade it later.
+[S] Objective answers, so you can automate scoring. Noted. What are the actual categories?
+[G] Four of them. Language-specific linguistic reasoning — grammar and word-formation rules that only exist in the target language. Their example: the French word "délice" is masculine in the singular and feminine in the plural, and the question asks you to reason from that fact to identify the word. Second, wordplay and riddles — puns and homophones that can't survive translation. There's a Chinese riddle you answer with a Chengyu, an ancient four-character idiom, based on a homophone.
+[O] Give me the cultural one, that sounds like the most fun to write.
+[G] Cultural and tradition reasoning — multi-step reasoning over local holidays and customs. The signature example: you're planning flights to Cancún around Día de la Candelaria, and you need two full weekends at the beach, so work out the exact departure and return dates.
+[S] And the fourth?
+[G] Math with cultural relevance. Not pure arithmetic — the question has to hinge on something culturally specific, a currency, a calendar, an institution. Their example involves the French "viager" property scheme, where you buy a house below market value but pay the seller an annuity until they die, and the math ties to the sixth Cannes Film Festival to pin down a birth year.
+[O] These are genuinely hard even for a fluent human. What stops a question from just being trivia dressed up as reasoning?
+[G] They require at least one real reasoning step grounded in that cultural or linguistic element — pure factual recall doesn't qualify. But the more interesting filter is the difficulty gate. A candidate question only survives if at least three of five current frontier models fail it.
+[S] Which five models?
+[G] Gemini-2.5-Pro, o4-mini, Claude-3.7-Sonnet, DeepSeek-R1, and Llama-4-Maverick. Annotators write the question and the answer, pull responses from all five models in randomized order, and only keep the question if three or more of them get it wrong.
+[S] Hold that thought, Julian, I want to come back to that panel later, because I think it's doing something the paper doesn't fully own up to.
+[G] Fair, I'll get to that. After the filter, there are two native-speaker review passes. The first checks the prompt and the answer are correct and actually match the category definition. The second re-verifies that three of five models really did fail, essentially a difficulty audit.
+[O] And the grading itself. Objective short answers means you can automate it?
+[G] Right, they use an LLM judge, GPT-4.1, that compares the model's answer against the ground truth. It agrees with human judgments over ninety-five percent of the time, with a Scott's Pi of point eight eight, which is a solid inter-rater reliability score.
+[O] One more piece, the English translations you mentioned earlier.
+[G] For two of the four categories, cultural and math, annotators also wrote English-equivalent versions, translating the logic and cultural substance, not just the words. That lets you directly compare a model's native-language reasoning against its English reasoning on the same underlying problem. Linguistic and wordplay questions don't get this treatment, because a French pun translated into English usually just stops being a pun.
+[S] Okay, numbers. Top of the leaderboard.
+[G] Across fourteen frontier models, nobody breaks fifty percent. o3-pro leads at forty-nine percent. Behind it, clustered close together: o3 on high reasoning effort at forty-five point five, Gemini-2.5-Pro at forty-five point one, o3 on medium effort at forty-four point five.
+[O] And then a cliff.
+[G] A steep one. Claude-4-Opus with extended thinking gets thirty-three point nine percent, its non-thinking sibling gets twenty-nine. Claude-3.7-Sonnet-thinking, twenty-seven point eight. DeepSeek-R1-0528, twenty-seven point six, an improvement over the original R1's twenty-four point three. o4-mini-high, twenty-two point two. GPT-4.1, twenty-one point two. Claude-4-Sonnet, eighteen point four. GPT-4o, twelve point four. And at the bottom, Llama-4-Maverick at eight point four percent.
+[S] The thinking-versus-non-thinking gap shows up cleanly every time it's tested.
+[G] Consistently. Reasoning-effort and reasoning-model variants beat their non-thinking or lower-effort siblings across every family they tested.
+[O] Break it down by category, that's where I think the paper actually gets interesting, more than the raw leaderboard.
+[G] Math with cultural relevance is the hardest category overall, twenty-three point three percent average across all models. Spanish math is the single worst cell, eighteen point seven percent. Linguistic reasoning scores highest on average, thirty-four point eight percent, cultural reasoning close behind at thirty-one point one. Wordplay stays hard everywhere but is comparatively easiest in French.
+[S] And Spanish is the roughest language overall?
+[G] Yes, particularly for math and wordplay. But here's the finding I'd flag hardest: models re-rank across categories. Gemini-2.5-Pro is only third on the overall leaderboard, but it's first in math. And o3-pro, despite leading overall, spikes to seventy-five point nine percent on French wordplay specifically, way above its own average.
+[O] So a single number hides real structure. A model that looks middling overall might be the best choice for a specific task.
+[G] That's the authors' own argument, and their category breakdown table backs it up directly.
+[S] Now the English-equivalent comparison, that's the part I actually find most convincing in the whole paper.
+[G] For math, translating into English lifts accuracy by roughly ten points on average. It's much bigger for Spanish, up nearly nineteen points, and Chinese, up about twelve and a half. The authors' case-study read is that models retrieve the right background facts and numeric values more reliably when the prompt is in English.
+[O] But cultural reasoning doesn't get that boost.
+[G] Barely moves at all. Spanish up three and a half points, Chinese up about one point four, and French actually goes down five points. Their explanation is that cultural knowledge is specific and nuanced enough that it's simply missing from the model, in English or in the original language. Translating doesn't help if the knowledge was never there to begin with.
+[S] Which is a genuinely clean, falsifiable distinction. English is a crutch for retrieval-heavy math, not for missing cultural knowledge.
+[G] There's a related number worth naming. They call it the Mother Tongue Effect, and on average it's negative five point four, meaning models are, on average, slightly worse answering in the native language than in English. Consistency between the two settings, getting the same question right in both, averages only around thirty-five percent. And the gap between a model's best and worst language averages almost fourteen points. DeepSeek-R1 alone swings twenty-nine points between its best and worst language.
+[O] Alright, let me make the case for why this matters. This is the first benchmark I've seen that actually tests whether a model's reasoning is grounded in a culture, not just translated into its words. The finding that nobody clears fifty percent, on questions with short, objective, human-verified answers, is a real result, not a vibes-based "models seem worse in other languages" claim. It's also diagnostic in a useful way. The category breakdown tells you where a model actually struggles, not just whether it struggles.
+[S] I'll grant the construction is careful and the taxonomy is genuinely useful. But I want to go back to the filter panel, Julian, because I think it quietly rigs the leaderboard. The difficulty filter keeps a question only if three of five specific models fail it, Gemini-2.5-Pro, o4-mini, Claude-3.7-Sonnet, DeepSeek-R1, and Llama-4-Maverick. The o3 family was never in that panel.
+[O] Meaning the models that end up winning were exempt from the exact filter that defines what's in the dataset.
+[S] Right. o4-mini, DeepSeek-R1, and Llama-4 were filtered against directly, the dataset is adversarially selected to be hard for them specifically. o3 and o3-pro never had to survive that gauntlet. That's a real asymmetry, and it plausibly inflates the o3 family's relative standing while deflating the panel members'.
+[G] That's a fair criticism, and it's not something the paper itself flags. I'd frame it this way: the "under fifty percent for everyone" finding is real and hard to dismiss, because it holds for every model, including ones outside the panel. But the exact ordering, o3-pro first, Gemini third, and so on, should be read as directional, not as a clean capability ladder, precisely because of that panel asymmetry.
+[O] I can live with that caveat. I still think a difficulty ceiling under fifty percent, even with a somewhat unfair panel, tells you the top of the field has real room to grow.
+[S] My second concern is about the per-language, per-category numbers, the most interesting part of the paper, and also the part built on the smallest samples. One thousand fifty-five items split into twelve language-by-category buckets of roughly seventy to a hundred and twenty each, then again per model. o3-pro's seventy-five point nine percent on French wordplay is sitting on just seventy-nine items, single-sample pass-at-one, no run-to-run variance reported anywhere in the paper.
+[G] Also fair. Those binomial confidence intervals get wide fast at that cell size, and the paper reports zero repeated-sampling variance, everything is a single pass. I'd treat any individual cell-level spike, like that French wordplay number, as suggestive rather than settled.
+[O] Even so, the category-level averages, pooled across languages, are built on hundreds of items each. Math at two hundred sixty-one questions, cultural at three hundred nineteen. Those broader patterns, math being hardest, English helping math but not culture, I don't think small-cell noise explains those away.
+[S] Agreed, the broad patterns are the load-bearing result. I'm skeptical of any specific leaderboard position or any specific cell, not the shape of the finding.
+[G] If I'm scoring this, the headline claim, frontier models are still bad at native multilingual reasoning, survives the criticism intact, because it doesn't depend on the panel or on any single cell. The specific ranking and the flashiest individual numbers deserve real skepticism, exactly for the reasons you're both raising.
+[O] What changes if this holds up, Julian?
+[G] For eval practice broadly, I think the lesson is that a difficulty filter built from a fixed model panel isn't neutral, it's a design choice that shapes who wins later, and that's worth flagging in any benchmark, not just this one. For multilingual work specifically, the English-versus-culture split is a genuinely useful diagnostic. If a gap closes under translation, you're looking at a retrieval problem. If it doesn't, you're looking at a knowledge gap that translation can't fix.
+[S] And there's a contamination clock running. The dataset is public on Hugging Face. Right now it's clean, because these are freshly authored questions, not scraped exam content. But "three of five models fail" is a difficulty bar pinned to mid-2025 model versions, and it'll decay as models train on the internet that now contains this benchmark.
+[G] That's worth saying plainly too. The paper itself notes it only covers three high-resource languages, chosen by author familiarity, no low-resource languages, no dialectal variation between, say, Iberian and Latin American Spanish. The authors are explicit that's future work, not a hidden flaw.
+[O] Alright, Julian, the paper's takeaway.
+[G] Native, from-scratch authoring surfaces reasoning that translated benchmarks simply erase, and even the best model, o3-pro, only reaches forty-nine percent on it. English helps when the task is retrieval, like math, but not when the model is missing cultural knowledge outright, no matter what language you ask in.
+[O] Mine: this is the kind of benchmark that should make model builders uncomfortable in a productive way. There's real headroom here, and the taxonomy tells you exactly where to look for it.
+[S] And mine: trust the "under fifty percent" finding, because it holds regardless of the panel. Be much more careful with the exact leaderboard order and any single flashy cell, because both ride on a filter panel that exempted the eventual winners, and on sample sizes that are smaller than they look.
+[O] For the full tables, the figures, and our references, the writeup is on the litsearch site. Julian, thank you.
+[G] Thank you both, this was fun.
+[S] Thanks, Julian.

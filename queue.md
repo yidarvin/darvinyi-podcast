@@ -30,11 +30,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] wei-2025-bioriskeval
 - [x] stojanovski-2025-reasoning-gym
 - [x] guo-2025-visualtoolbench
-- [ ] zhang-2025-chasing-the-tail
-- [ ] jin-2025-progress-over-points
-- [ ] kale-2025-weak-to-strong-monitoring
-- [ ] han-2025-search-time-contamination
-- [ ] fabbri-2025-multinrc
+- [x] zhang-2025-chasing-the-tail
+- [x] jin-2025-progress-over-points
+- [x] kale-2025-weak-to-strong-monitoring
+- [x] han-2025-search-time-contamination
+- [x] fabbri-2025-multinrc
 - [ ] gunjal-2025-rubrics-as-rewards
 - [ ] turpin-2025-vft
 - [ ] knight-2025-fortress
