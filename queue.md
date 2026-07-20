@@ -188,11 +188,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] trivedi-2021-musique
 - [x] chan-2023-chateval
 - [x] perez-2022-ignore-previous-prompt
-- [ ] dubois-2023-alpacafarm
-- [ ] perez-2022-model-written-evals
-- [ ] xie-2024-osworld
-- [ ] tay-2020-long-range-arena
-- [ ] dubois-2024-lc-alpacaeval
+- [x] dubois-2023-alpacafarm
+- [x] perez-2022-model-written-evals
+- [x] xie-2024-osworld
+- [x] tay-2020-long-range-arena
+- [x] dubois-2024-lc-alpacaeval
 - [ ] zhong-2023-agieval
 - [ ] brown-2024-monkeys
 - [ ] ganguli-2022-red-teaming
