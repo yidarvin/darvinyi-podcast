@@ -83,11 +83,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] antol-2015-vqa
 - [x] hendrycks-2021-math
 - [x] brockman-2016-openai-gym
-- [ ] vedantam-2015-cider
-- [ ] buolamwini-2018-gender-shades
-- [ ] hardt-2016-equalized-odds
-- [ ] williams-2017-multinli
-- [ ] clark-2018-arc-science
+- [x] vedantam-2015-cider
+- [x] buolamwini-2018-gender-shades
+- [x] hardt-2016-equalized-odds
+- [x] williams-2017-multinli
+- [x] clark-2018-arc-science
 - [ ] yang-2018-hotpotqa
 - [ ] kwiatkowski-2019-natural-questions
 - [ ] bowman-2015-snli
