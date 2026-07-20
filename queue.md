@@ -143,11 +143,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] qin-2023-toolllm
 - [x] jin-2020-medqa
 - [x] liang-2022-helm
-- [ ] doddington-2002-nist
-- [ ] jain-2024-livecodebench
-- [ ] thakur-2021-beir
-- [ ] jin-2019-pubmedqa
-- [ ] jia-2017-adversarial-squad
+- [x] doddington-2002-nist
+- [x] jain-2024-livecodebench
+- [x] thakur-2021-beir
+- [x] jin-2019-pubmedqa
+- [x] jia-2017-adversarial-squad
 - [ ] zhou-2023-webarena
 - [ ] masry-2022-chartqa
 - [ ] lu-2024-mathvista
