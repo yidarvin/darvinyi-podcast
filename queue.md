@@ -113,11 +113,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] rein-2023-gpqa
 - [x] chen-2015-coco-captions
 - [x] wang-2019-superglue
-- [ ] torralba-2011-dataset-bias
-- [ ] lee-2018-mahalanobis-ood
-- [ ] srivastava-2022-big-bench
-- [ ] talmor-2019-commonsenseqa
-- [ ] liang-2017-odin
+- [x] torralba-2011-dataset-bias
+- [x] lee-2018-mahalanobis-ood
+- [x] srivastava-2022-big-bench
+- [x] talmor-2019-commonsenseqa
+- [x] liang-2017-odin
 - [ ] liu-2023-g-eval
 - [ ] wang-2020-alignment-uniformity
 - [ ] chouldechova-2016-recidivism
