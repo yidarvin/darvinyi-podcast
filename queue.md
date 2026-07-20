@@ -78,11 +78,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] guo-2017-calibration
 - [x] wang-2018-glue
 - [x] banerjee-2005-meteor
-- [ ] lakshminarayanan-2016-deep-ensembles
-- [ ] huang-2007-lfw
-- [ ] antol-2015-vqa
-- [ ] hendrycks-2021-math
-- [ ] brockman-2016-openai-gym
+- [x] lakshminarayanan-2016-deep-ensembles
+- [x] huang-2007-lfw
+- [x] antol-2015-vqa
+- [x] hendrycks-2021-math
+- [x] brockman-2016-openai-gym
 - [ ] vedantam-2015-cider
 - [ ] buolamwini-2018-gender-shades
 - [ ] hardt-2016-equalized-odds
