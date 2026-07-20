@@ -93,11 +93,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] bowman-2015-snli
 - [x] singhal-2023-med-palm
 - [x] hendrycks-2019-imagenet-c
-- [ ] dwork-2012-fairness-through-awareness
-- [ ] zellers-2019-hellaswag
-- [ ] hendrycks-2017-msp-baseline
-- [ ] goyal-2017-vqa-v2
-- [ ] liu-2023-lost-in-the-middle
+- [x] dwork-2012-fairness-through-awareness
+- [x] zellers-2019-hellaswag
+- [x] hendrycks-2017-msp-baseline
+- [x] goyal-2017-vqa-v2
+- [x] liu-2023-lost-in-the-middle
 - [ ] austin-2021-mbpp
 - [ ] joshi-2017-triviaqa
 - [ ] hermann-2015-cnn-dailymail
