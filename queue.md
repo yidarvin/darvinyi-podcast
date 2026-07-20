@@ -25,11 +25,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] ursekar-2026-vero
 - [x] pu-2026-lhaw
 - [x] raghavendra-2026-agentic-rubrics
-- [ ] gosai-2025-audio-multichallenge
-- [ ] sehwag-2025-propensitybench
-- [ ] wei-2025-bioriskeval
-- [ ] stojanovski-2025-reasoning-gym
-- [ ] guo-2025-visualtoolbench
+- [x] gosai-2025-audio-multichallenge
+- [x] sehwag-2025-propensitybench
+- [x] wei-2025-bioriskeval
+- [x] stojanovski-2025-reasoning-gym
+- [x] guo-2025-visualtoolbench
 - [ ] zhang-2025-chasing-the-tail
 - [ ] jin-2025-progress-over-points
 - [ ] kale-2025-weak-to-strong-monitoring
