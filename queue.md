@@ -50,11 +50,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] kritz-2025-j2
 - [x] da-2025-agent-rlvr
 - [x] wang-2025-red-teaming-roadmap
-- [ ] shuieh-2025-spurious-correlations
-- [ ] levine-2025-rebel
-- [ ] wang-2025-multifiletest
-- [ ] kumar-2024-browserart
-- [ ] chan-2024-synthetic-data
+- [x] shuieh-2025-spurious-correlations
+- [x] levine-2025-rebel
+- [x] wang-2025-multifiletest
+- [x] kumar-2024-browserart
+- [x] chan-2024-synthetic-data
 - [ ] raghavendra-2024-superficial-alignment
 - [ ] wang-2024-plansearch
 - [ ] nath-2024-goal-conditioned
