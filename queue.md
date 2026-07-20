@@ -123,11 +123,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] chouldechova-2016-recidivism
 - [x] hendrycks-2021-imagenet-r
 - [x] henderson-2017-deep-rl-that-matters
-- [ ] lu-2022-scienceqa
-- [ ] yue-2024-mmmu
-- [ ] anderson-2016-spice
-- [ ] liu-2024-mmbench
-- [ ] recht-2019-imagenet-generalize
+- [x] lu-2022-scienceqa
+- [x] yue-2024-mmmu
+- [x] anderson-2016-spice
+- [x] liu-2024-mmbench
+- [x] recht-2019-imagenet-generalize
 - [ ] snover-2006-ter
 - [ ] cer-2017-sts
 - [ ] kleinberg-2016-inherent-tradeoffs
