@@ -163,11 +163,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] fu-2024-video-mme
 - [x] patil-2023-gorilla
 - [x] corbett-davies-2017-cost-of-fairness
-- [ ] liu-2016-dialogue-eval-metrics
-- [ ] chiang-2024-chatbot-arena
-- [ ] min-2023-factscore
-- [ ] mazeika-2024-harmbench
-- [ ] dua-2019-drop
+- [x] liu-2016-dialogue-eval-metrics
+- [x] chiang-2024-chatbot-arena
+- [x] min-2023-factscore
+- [x] mazeika-2024-harmbench
+- [x] dua-2019-drop
 - [ ] press-2022-compositionality-gap
 - [ ] zafar-2016-disparate-mistreatment
 - [ ] gururangan-2018-annotation-artifacts
