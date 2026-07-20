@@ -103,11 +103,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] hermann-2015-cnn-dailymail
 - [x] lin-2021-truthfulqa
 - [x] post-2018-sacrebleu
-- [ ] nguyen-2015-fooling-images
-- [ ] sakaguchi-2019-winogrande
-- [ ] bellemare-2013-ale
-- [ ] geirhos-2019-texture-bias
-- [ ] caliskan-2017-weat
+- [x] nguyen-2015-fooling-images
+- [x] sakaguchi-2019-winogrande
+- [x] bellemare-2013-ale
+- [x] geirhos-2019-texture-bias
+- [x] caliskan-2017-weat
 - [ ] jimenez-2023-swe-bench
 - [ ] hessel-2021-clipscore
 - [ ] rein-2023-gpqa
