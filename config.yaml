@@ -1,0 +1,46 @@
+# litsearch-podcast configuration
+
+show:
+  title: "Litsearch Audio"
+  description: "An AI optimist, an AI skeptic, and a visiting scholar deconstruct the papers on litsearch.darvinyi.com."
+  author: "Darvin Yi"
+  link: "https://litsearch.darvinyi.com"
+  language: "en-us"
+  image_url: ""          # optional: square 1400-3000px JPG/PNG URL for podcast apps
+  explicit: "false"
+
+publish:
+  # Feed is served by the NAS over Tailscale — reachable everywhere as dodoland.
+  # To use HTTPS or a public domain instead, see the options at the end of SETUP.md
+  # and just change base_url here, then re-run make_feed + publish.
+  base_url: "http://dodoland:8091"            # matches nas/setup-nas.sh
+  ssh_target: "dodoland"                      # Tailscale MagicDNS name (resolves on all devices)
+  remote_dir: "/volume1/docker/podcast"       # matches nas/setup-nas.sh
+
+litsearch:
+  repo: "~/Projects/darvinyi-litsearch"   # local checkout on the Mac mini
+  content_hint: "src/content"             # where entry MDX files live (grep from here)
+  sources_dir: "sources"                  # downloaded paper PDFs cached here (gitignored)
+
+audio:
+  # Kokoro voice ids: first letter = accent (a = American, b = British).
+  # Hosts are FIXED across episodes; the guest default can be overridden
+  # per episode with `guest_voice:` in the script frontmatter, so each
+  # visiting scholar sounds distinct. Good guest options: bm_george,
+  # bf_emma, am_fenrir, af_bella, bm_lewis, af_nicole.
+  voices:
+    O: "af_heart"        # optimist host — warm American female
+    S: "am_michael"      # skeptic host — dry American male
+    G: "bm_george"       # default guest scholar — measured British male
+  speed: 1.0
+  pause_ms: 400          # silence between speaker turns
+  chunk_gap_ms: 120      # silence between chunks within one long turn
+  stereo_pan: true       # place speakers in the stereo field (headphone-friendly)
+  pan: {O: -0.25, S: 0.25, G: 0.0}   # optimist slightly left, skeptic right, guest center
+  bitrate: "112k"
+  channels: 2            # used only if stereo_pan is false (set 1 for mono)
+  max_chunk_chars: 300   # per-TTS-call cap (Kokoro token limit safety)
+  audio_dir: "audio"
+
+# Interpreter with kokoro/soundfile/pyyaml installed (see SETUP.md)
+python: "/Users/darvin/venvs/podcast/bin/python"
