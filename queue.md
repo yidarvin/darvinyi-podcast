@@ -35,11 +35,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] kale-2025-weak-to-strong-monitoring
 - [x] han-2025-search-time-contamination
 - [x] fabbri-2025-multinrc
-- [ ] gunjal-2025-rubrics-as-rewards
-- [ ] turpin-2025-vft
-- [ ] knight-2025-fortress
-- [ ] wang-2025-enigmaeval
-- [ ] jensen-2025-cfpd
+- [x] gunjal-2025-rubrics-as-rewards
+- [x] turpin-2025-vft
+- [x] knight-2025-fortress
+- [x] wang-2025-enigmaeval
+- [x] jensen-2025-cfpd
 - [ ] phan-2025-hle
 - [ ] sirdeshmukh-2025-multichallenge
 - [ ] zhang-2024-gsm1k
