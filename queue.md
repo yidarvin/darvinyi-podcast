@@ -118,11 +118,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] srivastava-2022-big-bench
 - [x] talmor-2019-commonsenseqa
 - [x] liang-2017-odin
-- [ ] liu-2023-g-eval
-- [ ] wang-2020-alignment-uniformity
-- [ ] chouldechova-2016-recidivism
-- [ ] hendrycks-2021-imagenet-r
-- [ ] henderson-2017-deep-rl-that-matters
+- [x] liu-2023-g-eval
+- [x] wang-2020-alignment-uniformity
+- [x] chouldechova-2016-recidivism
+- [x] hendrycks-2021-imagenet-r
+- [x] henderson-2017-deep-rl-that-matters
 - [ ] lu-2022-scienceqa
 - [ ] yue-2024-mmmu
 - [ ] anderson-2016-spice
