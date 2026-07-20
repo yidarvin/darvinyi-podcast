@@ -68,11 +68,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] krizhevsky-2009-cifar
 - [x] russakovsky-2015-ilsvrc
 - [x] papineni-2002-bleu
-- [ ] lin-2004-rouge
-- [ ] chen-2021-codex
-- [ ] zheng-2023-mt-bench
-- [ ] liu-2015-celeba
-- [ ] cobbe-2021-gsm8k
+- [x] lin-2004-rouge
+- [x] chen-2021-codex
+- [x] zheng-2023-mt-bench
+- [x] liu-2015-celeba
+- [x] cobbe-2021-gsm8k
 - [ ] rajpurkar-2016-squad
 - [ ] hendrycks-2020-mmlu
 - [ ] guo-2017-calibration
