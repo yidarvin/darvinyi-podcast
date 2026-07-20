@@ -153,11 +153,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] lu-2024-mathvista
 - [x] conneau-2018-xnli
 - [x] rei-2020-comet
-- [ ] marino-2019-ok-vqa
-- [ ] lu-2021-fantastically-ordered
-- [ ] maynez-2020-faithfulness
-- [ ] kornblith-2019-imagenet-transfer
-- [ ] ribeiro-2020-checklist
+- [x] marino-2019-ok-vqa
+- [x] lu-2021-fantastically-ordered
+- [x] maynez-2020-faithfulness
+- [x] kornblith-2019-imagenet-transfer
+- [x] ribeiro-2020-checklist
 - [ ] bai-2023-longbench
 - [ ] ho-2020-2wikimultihopqa
 - [ ] fu-2024-video-mme
