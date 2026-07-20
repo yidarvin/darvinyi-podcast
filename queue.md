@@ -20,11 +20,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] mahmoud-2026-reward-hacking
 - [x] klearman-2026-semantic-stratification
 - [x] elfeki-2026-hil-bench
-- [ ] campbell-2026-defensive-refusal
-- [ ] zhang-2026-bio-uplift
-- [ ] ursekar-2026-vero
-- [ ] pu-2026-lhaw
-- [ ] raghavendra-2026-agentic-rubrics
+- [x] campbell-2026-defensive-refusal
+- [x] zhang-2026-bio-uplift
+- [x] ursekar-2026-vero
+- [x] pu-2026-lhaw
+- [x] raghavendra-2026-agentic-rubrics
 - [ ] gosai-2025-audio-multichallenge
 - [ ] sehwag-2025-propensitybench
 - [ ] wei-2025-bioriskeval
