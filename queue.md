@@ -98,11 +98,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] hendrycks-2017-msp-baseline
 - [x] goyal-2017-vqa-v2
 - [x] liu-2023-lost-in-the-middle
-- [ ] austin-2021-mbpp
-- [ ] joshi-2017-triviaqa
-- [ ] hermann-2015-cnn-dailymail
-- [ ] lin-2021-truthfulqa
-- [ ] post-2018-sacrebleu
+- [x] austin-2021-mbpp
+- [x] joshi-2017-triviaqa
+- [x] hermann-2015-cnn-dailymail
+- [x] lin-2021-truthfulqa
+- [x] post-2018-sacrebleu
 - [ ] nguyen-2015-fooling-images
 - [ ] sakaguchi-2019-winogrande
 - [ ] bellemare-2013-ale
