@@ -63,11 +63,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] levine-2023-reward-distribution-shift
 - [x] pougue-biyong-2021-debagreement
 - [x] pu-2023-peft-llms
-- [ ] deng-2009-imagenet
-- [ ] lin-2014-coco
-- [ ] krizhevsky-2009-cifar
-- [ ] russakovsky-2015-ilsvrc
-- [ ] papineni-2002-bleu
+- [x] deng-2009-imagenet
+- [x] lin-2014-coco
+- [x] krizhevsky-2009-cifar
+- [x] russakovsky-2015-ilsvrc
+- [x] papineni-2002-bleu
 - [ ] lin-2004-rouge
 - [ ] chen-2021-codex
 - [ ] zheng-2023-mt-bench
