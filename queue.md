@@ -45,11 +45,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] zhang-2024-gsm1k
 - [x] nath-2025-toolcomp
 - [x] ren-2025-mask
-- [ ] slack-2023-holistic-eval
-- [ ] nath-2025-adaptive-guidance
-- [ ] kritz-2025-j2
-- [ ] da-2025-agent-rlvr
-- [ ] wang-2025-red-teaming-roadmap
+- [x] slack-2023-holistic-eval
+- [x] nath-2025-adaptive-guidance
+- [x] kritz-2025-j2
+- [x] da-2025-agent-rlvr
+- [x] wang-2025-red-teaming-roadmap
 - [ ] shuieh-2025-spurious-correlations
 - [ ] levine-2025-rebel
 - [ ] wang-2025-multifiletest
