@@ -23,7 +23,7 @@ publish:
   remote_dir: "/volume1/docker/podcast"       # matches nas/setup-nas.sh
 
 litsearch:
-  repo: "~/Documents/Projects/darvinyi-litsearch"   # local checkout on the Mac mini
+  repo: "~/Projects/darvinyi-litsearch"   # local checkout on the Mac mini
   content_hint: "public/papers"           # per-slug <slug>.html writeups; metadata in data/papers.json
   sources_dir: "sources"                  # downloaded paper PDFs cached here (gitignored)
 
