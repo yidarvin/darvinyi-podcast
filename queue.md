@@ -148,11 +148,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] thakur-2021-beir
 - [x] jin-2019-pubmedqa
 - [x] jia-2017-adversarial-squad
-- [ ] zhou-2023-webarena
-- [ ] masry-2022-chartqa
-- [ ] lu-2024-mathvista
-- [ ] conneau-2018-xnli
-- [ ] rei-2020-comet
+- [x] zhou-2023-webarena
+- [x] masry-2022-chartqa
+- [x] lu-2024-mathvista
+- [x] conneau-2018-xnli
+- [x] rei-2020-comet
 - [ ] marino-2019-ok-vqa
 - [ ] lu-2021-fantastically-ordered
 - [ ] maynez-2020-faithfulness
