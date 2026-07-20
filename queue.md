@@ -138,11 +138,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] liu-2023-evalplus
 - [x] yu-2018-spider
 - [x] lin-2003-rouge-predecessor
-- [ ] sellam-2020-bleurt
-- [ ] wang-2024-mmlu-pro
-- [ ] qin-2023-toolllm
-- [ ] jin-2020-medqa
-- [ ] liang-2022-helm
+- [x] sellam-2020-bleurt
+- [x] wang-2024-mmlu-pro
+- [x] qin-2023-toolllm
+- [x] jin-2020-medqa
+- [x] liang-2022-helm
 - [ ] doddington-2002-nist
 - [ ] jain-2024-livecodebench
 - [ ] thakur-2021-beir
