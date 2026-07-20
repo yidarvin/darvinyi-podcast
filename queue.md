@@ -73,11 +73,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] zheng-2023-mt-bench
 - [x] liu-2015-celeba
 - [x] cobbe-2021-gsm8k
-- [ ] rajpurkar-2016-squad
-- [ ] hendrycks-2020-mmlu
-- [ ] guo-2017-calibration
-- [ ] wang-2018-glue
-- [ ] banerjee-2005-meteor
+- [x] rajpurkar-2016-squad
+- [x] hendrycks-2020-mmlu
+- [x] guo-2017-calibration
+- [x] wang-2018-glue
+- [x] banerjee-2005-meteor
 - [ ] lakshminarayanan-2016-deep-ensembles
 - [ ] huang-2007-lfw
 - [ ] antol-2015-vqa
