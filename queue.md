@@ -128,11 +128,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] anderson-2016-spice
 - [x] liu-2024-mmbench
 - [x] recht-2019-imagenet-generalize
-- [ ] snover-2006-ter
-- [ ] cer-2017-sts
-- [ ] kleinberg-2016-inherent-tradeoffs
-- [ ] liu-2020-energy-ood
-- [ ] suzgun-2022-bbh
+- [x] snover-2006-ter
+- [x] cer-2017-sts
+- [x] kleinberg-2016-inherent-tradeoffs
+- [x] liu-2020-energy-ood
+- [x] suzgun-2022-bbh
 - [ ] hendrycks-2021-imagenet-a
 - [ ] zhao-2021-calibrate
 - [ ] liu-2023-evalplus
