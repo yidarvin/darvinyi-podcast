@@ -88,11 +88,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] hardt-2016-equalized-odds
 - [x] williams-2017-multinli
 - [x] clark-2018-arc-science
-- [ ] yang-2018-hotpotqa
-- [ ] kwiatkowski-2019-natural-questions
-- [ ] bowman-2015-snli
-- [ ] singhal-2023-med-palm
-- [ ] hendrycks-2019-imagenet-c
+- [x] yang-2018-hotpotqa
+- [x] kwiatkowski-2019-natural-questions
+- [x] bowman-2015-snli
+- [x] singhal-2023-med-palm
+- [x] hendrycks-2019-imagenet-c
 - [ ] dwork-2012-fairness-through-awareness
 - [ ] zellers-2019-hellaswag
 - [ ] hendrycks-2017-msp-baseline
