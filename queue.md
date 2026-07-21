@@ -303,11 +303,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] maurya-2025-mrbench
 - [x] bean-2025-construct-validity
 - [x] emmons-2025-cot-evade-monitors
-- [ ] singh-2025-leaderboard-illusion
-- [ ] backlund-2025-vending-bench
-- [ ] huang-2024-crmarena
-- [ ] ma-2024-spreadsheetbench
-- [ ] zhu-2025-agentic-benchmarks
+- [x] singh-2025-leaderboard-illusion
+- [x] backlund-2025-vending-bench
+- [x] huang-2024-crmarena
+- [x] ma-2024-spreadsheetbench
+- [x] zhu-2025-agentic-benchmarks
 - [ ] wang-2023-maud
 - [ ] deshpande-2025-trail
 - [ ] gao-2025-mcp-radar
