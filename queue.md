@@ -208,11 +208,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] panickssery-2024-self-recognition
 - [x] kim-2023-prometheus
 - [x] zhu-2021-tatqa
-- [ ] chao-2024-jailbreakbench
-- [ ] lai-2022-ds-1000
-- [ ] jacobs-2019-measurement-fairness
-- [ ] li-2023-api-bank
-- [ ] chalkidis-2021-lexglue
+- [x] chao-2024-jailbreakbench
+- [x] lai-2022-ds-1000
+- [x] jacobs-2019-measurement-fairness
+- [x] li-2023-api-bank
+- [x] chalkidis-2021-lexglue
 - [ ] yue-2024-mmmu-pro
 - [ ] wei-2025-browsecomp
 - [ ] fu-2024-gptscore
