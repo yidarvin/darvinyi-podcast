@@ -278,11 +278,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] debenedetti-2024-agentdojo
 - [x] laurent-2024-lab-bench
 - [x] zan-2025-multi-swe-bench
-- [ ] reuel-2024-betterbench
-- [ ] chen-2024-scienceagentbench
-- [ ] jiang-2019-reasoning-shortcuts
-- [ ] paglieri-2024-balrog
-- [ ] kazemi-2025-big-bench-extra-hard
+- [x] reuel-2024-betterbench
+- [x] chen-2024-scienceagentbench
+- [x] jiang-2019-reasoning-shortcuts
+- [x] paglieri-2024-balrog
+- [x] kazemi-2025-big-bench-extra-hard
 - [ ] yen-2024-helmet
 - [ ] malik-2026-rewardbench2
 - [ ] pyatkin-2025-ifbench
