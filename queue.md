@@ -218,11 +218,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] fu-2024-gptscore
 - [x] li-2024-arena-hard
 - [x] kim-2024-prometheus-2
-- [ ] guha-2023-legalbench
-- [ ] lambert-2024-rewardbench
-- [ ] rottger-2023-xstest
-- [ ] zhan-2024-injecagent
-- [ ] ruan-2023-toolemu
+- [x] guha-2023-legalbench
+- [x] lambert-2024-rewardbench
+- [x] rottger-2023-xstest
+- [x] zhan-2024-injecagent
+- [x] ruan-2023-toolemu
 - [ ] irving-2018-debate
 - [ ] he-2024-webvoyager
 - [ ] liu-2023-open-prompt-injection
