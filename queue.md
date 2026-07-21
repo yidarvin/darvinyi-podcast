@@ -233,11 +233,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] xu-2022-msc
 - [x] arora-2025-healthbench
 - [x] hendrycks-2021-cuad
-- [ ] wei-2024-simpleqa
-- [ ] gu-2024-cruxeval
-- [ ] barres-2025-tau2-bench
-- [ ] andriushchenko-2025-agentharm
-- [ ] bai-2024-longbench-v2
+- [x] wei-2024-simpleqa
+- [x] gu-2024-cruxeval
+- [x] barres-2025-tau2-bench
+- [x] andriushchenko-2025-agentharm
+- [x] bai-2024-longbench-v2
 - [ ] chan-2024-mle-bench
 - [ ] greenblatt-2024-alignment-faking
 - [ ] bavaresco-2024-judge-bench
