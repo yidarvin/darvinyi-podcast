@@ -268,11 +268,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] white-2024-livebench
 - [x] xie-2024-finben
 - [x] min-2019-compositional-shortcuts
-- [ ] macina-2023-mathdial
-- [ ] korbak-2025-cot-monitorability
-- [ ] freitag-2023-wmt23-metrics
-- [ ] kapoor-2024-ai-agents-that-matter
-- [ ] wei-2024-longfact
+- [x] macina-2023-mathdial
+- [x] korbak-2025-cot-monitorability
+- [x] freitag-2023-wmt23-metrics
+- [x] kapoor-2024-ai-agents-that-matter
+- [x] wei-2024-longfact
 - [ ] zhang-2025-cybench
 - [ ] pipitone-2024-legalbench-rag
 - [ ] debenedetti-2024-agentdojo
