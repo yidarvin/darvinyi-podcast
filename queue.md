@@ -228,11 +228,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] liu-2023-open-prompt-injection
 - [x] wang-2023-pandalm
 - [x] patil-2025-bfcl
-- [ ] rawles-2024-androidworld
-- [ ] chen-2025-cot-faithfulness
-- [ ] xu-2022-msc
-- [ ] arora-2025-healthbench
-- [ ] hendrycks-2021-cuad
+- [x] rawles-2024-androidworld
+- [x] chen-2025-cot-faithfulness
+- [x] xu-2022-msc
+- [x] arora-2025-healthbench
+- [x] hendrycks-2021-cuad
 - [ ] wei-2024-simpleqa
 - [ ] gu-2024-cruxeval
 - [ ] barres-2025-tau2-bench
