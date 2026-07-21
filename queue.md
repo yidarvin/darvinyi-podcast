@@ -258,11 +258,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] map-2025-supergpqa
 - [x] cui-2024-or-bench
 - [x] zuo-2025-medxpertqa
-- [ ] yang-2024-swe-bench-multimodal
-- [ ] merrill-2026-terminal-bench
-- [ ] du-2025-deepresearch-bench
-- [ ] greenblatt-2023-ai-control
-- [ ] koreeda-2021-contractnli
+- [x] yang-2024-swe-bench-multimodal
+- [x] merrill-2026-terminal-bench
+- [x] du-2025-deepresearch-bench
+- [x] greenblatt-2023-ai-control
+- [x] koreeda-2021-contractnli
 - [ ] koo-2023-cobbler
 - [ ] zhuge-2024-agent-as-judge
 - [ ] white-2024-livebench
