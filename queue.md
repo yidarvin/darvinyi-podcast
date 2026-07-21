@@ -273,11 +273,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] freitag-2023-wmt23-metrics
 - [x] kapoor-2024-ai-agents-that-matter
 - [x] wei-2024-longfact
-- [ ] zhang-2025-cybench
-- [ ] pipitone-2024-legalbench-rag
-- [ ] debenedetti-2024-agentdojo
-- [ ] laurent-2024-lab-bench
-- [ ] zan-2025-multi-swe-bench
+- [x] zhang-2025-cybench
+- [x] pipitone-2024-legalbench-rag
+- [x] debenedetti-2024-agentdojo
+- [x] laurent-2024-lab-bench
+- [x] zan-2025-multi-swe-bench
 - [ ] reuel-2024-betterbench
 - [ ] chen-2024-scienceagentbench
 - [ ] jiang-2019-reasoning-shortcuts
