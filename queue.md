@@ -318,9 +318,9 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] he-2025-advancedif
 - [x] gautam-2025-refactorbench
 - [x] li-2025-researchqa
-- [ ] zheng-2025-webguard
-- [ ] hupkes-2025-multiloko
-- [ ] chollet-2019-measure-of-intelligence
-- [ ] vidgen-2025-apex
-- [ ] liu-2025-contracteval
-- [ ] yi-2025-upbench
+- [x] zheng-2025-webguard
+- [x] hupkes-2025-multiloko
+- [x] chollet-2019-measure-of-intelligence
+- [x] vidgen-2025-apex
+- [x] liu-2025-contracteval
+- [x] yi-2025-upbench
