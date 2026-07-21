@@ -193,11 +193,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] xie-2024-osworld
 - [x] tay-2020-long-range-arena
 - [x] dubois-2024-lc-alpacaeval
-- [ ] zhong-2023-agieval
-- [ ] brown-2024-monkeys
-- [ ] ganguli-2022-red-teaming
-- [ ] yao-2024-tau-bench
-- [ ] mangalam-2023-egoschema
+- [x] zhong-2023-agieval
+- [x] brown-2024-monkeys
+- [x] ganguli-2022-red-teaming
+- [x] yao-2024-tau-bench
+- [x] mangalam-2023-egoschema
 - [ ] chen-2021-finqa
 - [ ] schaeffer-2023-emergent-mirage
 - [ ] malo-2014-good-debt

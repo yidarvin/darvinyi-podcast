@@ -1,0 +1,82 @@
+---
+slug: zhong-2023-agieval
+title: "AGIEval: A Human-Centric Benchmark for Evaluating Foundation Models"
+description: "Microsoft put GPT-4 through the same twenty official exams humans sit for — the Gaokao, the SAT, the LSAT — and the model clears the average human line on three of them while quietly missing it on the benchmark's own aggregate score."
+date: 2026-07-19
+guest_name: "Malcolm"
+guest_voice: "bm_lewis"
+---
+[O] GPT-four beats the average human test-taker on the SAT, the LSAT, and math competitions — that's the sentence everyone quoted out of this paper.
+[S] It beats the average human on some of the sub-tests. On the benchmark's own headline number, the all-task average across all twenty exams, GPT-four comes in well below the average human line.
+[O] Which is still remarkable for something trained to predict the next word, not to sit for a bar exam.
+[S] Or it's remarkable that one paper produced both readings from the same table, and only one of them made it into the abstract. That's what we're here to sort out.
+[O] Welcome to Litsearch Audio, where an optimist, a skeptic, and a visiting scholar take apart one paper from litsearch dot darvinyi dot com.
+[S] Today's paper is AGIEval, A Human-Centric Benchmark for Evaluating Foundation Models, from Wanjun Zhong, Ruixiang Cui, and colleagues at Microsoft, posted to arXiv in April of twenty twenty-three.
+[O] It turns real admission and qualification exams, the kind humans actually sit for, into a public, bilingual test suite for language models. To help us take it apart, we've got Malcolm with us, a researcher who's spent real time with this work. Malcolm, welcome.
+[G] Glad to be here. This is a paper with a genuinely useful idea sitting underneath a headline that oversells it, and both halves are worth taking seriously.
+[S] Malcolm, set the scene. What was wrong with how people were benchmarking these models before this?
+[G] The decade's defining benchmarks, GLUE, SuperGLUE, SQuAD, SNLI, are artificial datasets. They were built to isolate one narrow machine skill: extract an answer span, detect a paraphrase, classify entailment. They test what's convenient to label, not the multi-step reasoning a person actually gets tested on.
+[O] So once models started clearing those, the question shifted from "can it do this narrow task" to "how does it compare to an actual person."
+[G] Right. MMLU pushed in that direction first, by collecting subject-matter questions from online sources across a broad range of subjects. But the authors flag two gaps: it's unclear whether MMLU's questions come from professional, high-stakes sources, and it's English only.
+[S] There's a second motivation too, isn't there, the GPT-four technical report itself.
+[G] Exactly. OpenAI's GPT-four report advertised bar-exam and SAT scores, and those numbers got repeated everywhere. But the exact exam sets, the model's outputs, and the scoring method were never released. Nobody outside OpenAI could reproduce that comparison or audit it.
+[O] So AGIEval's bet is: use the same official, high-stakes exams society already uses to gate people into universities and professions, but do it in the open. Release the data, the model outputs, and an automatic metric.
+[G] That's the whole pitch. Reproducibility is the real contribution here, more than the exam idea itself, which MMLU had already gestured at.
+[S] Walk us through what's actually in it.
+[G] Twenty tasks, eight thousand sixty-two questions total, bilingual, English and Chinese. The core is the Chinese Gaokao, the college entrance exam, split into eight subjects: history, math, English, Chinese, geography, biology, chemistry, physics. About twelve million students sit that exam every year.
+[O] Twelve million a year is an enormous population to be calibrating a human baseline against.
+[G] It is, and that's deliberate — these are exams with huge, well-studied test-taker populations. Alongside Gaokao there's the SAT, English and math, with one point seven million takers a year, and the LSAT's analytical reasoning, logical reasoning, and reading comprehension sections, about one hundred seventy thousand takers a year, drawn from exams given between nineteen ninety-one and twenty sixteen.
+[S] And beyond those two?
+[G] The Chinese lawyer qualification exam, a national civil-service exam repurposed from an existing dataset called LogiQA, and algebra word problems styled on the GRE and GMAT. High-school math competition questions, the AMC and AIME, come in through the MATH dataset.
+[O] And they only keep the objective questions.
+[G] Right, multiple-choice and fill-in-the-blank only. Every subjective, essay-style question gets dropped, specifically so scoring can be fully automatic: accuracy for multiple choice, Exact Match and F1 for fill-in-the-blank.
+[S] How do they establish the human comparison line?
+[G] Two numbers per task: an average, the fiftieth-percentile test-taker, and a top score, the top one percent, or top ten percent for the bar exam. For MATH, LogiQA, and the lawyer exam, those come straight from the datasets' original publications. For SAT, LSAT, Gaokao, and the GRE-GMAT tasks, there's no per-item human accuracy on file, so the authors estimate it. They take the raw percentile cutoffs test-takers actually scored and rescale them onto a zero-to-hundred scale against the exam's full marks.
+[O] That's worth sitting with for a second. That's a percentile converted to a percentage, not a measured accuracy on this specific set of questions.
+[G] Correct, and I'll flag now that this becomes load-bearing later for the headline claim.
+[S] What about the actual prompting? How do they run the models?
+[G] Four protocols, crossed: zero-shot and few-shot, each with and without Chain-of-Thought. Few-shot means five in-context examples. Chain-of-Thought here is two separate calls: first the model is prompted with "let's think step by step" to produce an explanation, then that explanation gets fed back in to extract a final answer. Every run uses greedy decoding, temperature zero, capped at two thousand forty-eight tokens, through the Azure OpenAI API.
+[O] And the models on trial?
+[G] Three closed OpenAI models, GPT-four, ChatGPT, and Text-Davinci-003, which is the GPT-3.5 generation, plus one open model, Vicuna, a thirteen-billion-parameter LLaMA fine-tune that was claiming to reach over ninety percent of ChatGPT's quality on community leaderboards at the time.
+[S] One detail before we move to results, I noticed something a little odd tucked in the setup.
+[G] The API mismatch. GPT-four only had the chat completion API available at the time. The authors found ChatGPT struggled to follow the few-shot pattern through that same chat API, so for ChatGPT's few-shot runs specifically, they switched to the plain completion API instead, the same one used for Text-Davinci-003. GPT-four's few-shot numbers and ChatGPT's few-shot numbers aren't coming through an identical interface.
+[O] Which is a small thing on its own, but it means the few-shot column isn't a perfectly controlled comparison between those two models.
+[S] Let's get to the numbers. Headline first.
+[G] Under zero-shot Chain-of-Thought, GPT-four's average across all twenty tasks is fifty-eight point four percent. ChatGPT is at forty-three point two, Text-Davinci-003 at thirty-seven point four. Few-shot Chain-of-Thought nudges GPT-four up to sixty-one point three.
+[O] And the average human line for that same all-task average?
+[G] Sixty-seven percent, for the average test-taker. Ninety-one percent for the top one percent. So on the benchmark's own aggregate number, GPT-four sits below the average human, and nowhere close to the top human, in both settings.
+[S] But per-task is where it gets interesting, because some of those individual wins are real and large.
+[G] They are. GPT-four hits ninety-five percent on SAT Math, against an average human of sixty-six percent. Ninety-two point five percent on Gaokao English, against an average human of sixty-nine percent. Eighty-five point one percent on the LSAT's reading comprehension section and eighty point six on logical reasoning, both against an average human of fifty-six percent. SAT, LSAT, and the math competitions are exactly where the paper's abstract says GPT-four clears the average human line, and on those specific tasks, that's accurate.
+[O] Now give me the other end of the table.
+[G] LSAT analytical reasoning: thirty-four point four percent, against an average human of fifty-six. Gaokao physics: forty-five point five, against seventy-one. Gaokao math in fill-in-the-blank form: fifteen point three, against seventy-three. Those are the tasks that need genuine multi-step reasoning rather than recall, and GPT-four falls well under the human floor on every one of them.
+[S] So the pattern is verbal recall and standard math, strong; multi-step reasoning, weak.
+[G] That's the paper's own framing too, and a second, independent measurement backs it up. They took a hundred wrongly-answered ChatGPT outputs per task and had PhD-level annotators score each one along four axes: understanding, knowledge, reasoning, calculation. Understanding comes out strong across nearly every task. Reasoning and calculation are consistently the weak links: the model ignores premise conditions, mixes up sufficient and necessary conditions, and in one biology example it swaps a labeled amino acid for a labeled transfer-RNA molecule mid-explanation, a related but different concept, and reasons confidently from the wrong one.
+[O] Two more results before we argue about what they mean. First, few-shot versus zero-shot.
+[G] Barely any gap. Zero-shot Chain-of-Thought is fifty-eight point four percent for GPT-four, few-shot Chain-of-Thought is sixty-one point three, under three points of difference. The authors read that as a reversal from the GPT-3 era, when in-context examples used to matter enormously, and credit it to instruction tuning.
+[S] And Chain-of-Thought itself?
+[G] Double-edged. It's a large, consistent gain on English math: MATH, the algebra word problems, SAT Math. But it degrades performance on several other tasks, and it's language-sensitive, it helps LogiQA's English version but hurts the Chinese version of the same questions. There's also one number that looks like an outright artifact: SAT English without the reading passage drops from fifty-one percent zero-shot to twenty-five point two percent under zero-shot Chain-of-Thought.
+[O] A roughly twenty-six-point collapse from adding one explanation step.
+[G] Which reads a lot more like an answer-parsing failure than a reasoning result, and the paper doesn't report a parser error rate to rule that out.
+[S] And the open model?
+[G] A reality check. Despite Vicuna's leaderboard reputation, it lands in the twenties and thirties across most of AGIEval's twenty tasks, starting right at LogiQA English zero-shot, where it scores twenty-six point four percent. Whatever the closed models are doing, the open model of the moment wasn't close to it.
+[O] Okay, time to actually argue about what this means. Optimist case first.
+[O] The durable contribution here is the release itself: eight thousand sixty-two real exam questions, bilingual, with full model outputs for every protocol, published openly. That directly fixes what the GPT-four technical report couldn't be checked on, a black-box bar-exam score anyone could quote but nobody could audit. And the four-axis qualitative breakdown, understanding versus knowledge versus reasoning versus calculation, is a genuinely useful diagnostic, not just another leaderboard number.
+[S] My case is about what the headline claim leans on. Contamination first: every source exam here, Gaokao, SAT, LSAT questions from nineteen ninety-one to twenty sixteen, math competition problems, is public and has been reposted across the web for years. That's exactly the kind of text that ends up in a pretraining corpus, and on the surface this looks like a benchmark that never checks for it.
+[G] I want to correct that last part, because it's not quite right, and the paper's own appendix matters here. There is a contamination analysis, it's just narrow, and it's tucked away in an appendix easy to miss.
+[O] What does it actually show?
+[G] They timestamped entries across all nine Gaokao subject datasets, then tested six of them by splitting each into a full set and an uncontaminated subset, questions released after twenty twenty-two, which postdates GPT-four and ChatGPT's training cutoff of September twenty twenty-one: geography, biology, chemistry, physics, and both math tasks. Chinese, English, and history were excluded for having too few post-cutoff items to test.
+[S] And the result?
+[G] Mixed on the non-math subjects — geography dips about four points, chemistry drops about ten, biology and physics barely move at all. But the math tasks drop hard: Gaokao math in question-and-answer form goes from forty-seven percent on the full set to twenty-nine point eight percent on the uncontaminated subset, and the fill-in-the-blank version drops from sixteen point one to four percent. The authors' own conclusion is that AGIEval may similarly encounter data contamination, while still remaining useful.
+[S] So it's a real check, but a thin one. Six subjects out of twenty tasks, some of those uncontaminated subsets as small as five questions, and it never touches SAT, LSAT, the math competitions, or the lawyer exam at all, which is exactly where the biggest human-beating numbers come from.
+[G] That's the fair summary. The paper doesn't ignore contamination the way a first pass at this suggests, but its own audit also doesn't clear the tasks that carry the headline claim.
+[O] Fine, I'll take the correction. But I'd still say the honest reading of the abstract is "GPT-four clears the average human line on three specific exam families," and that's literally what it says. The all-task average trailing human isn't hidden, it's right there in the same table.
+[S] It's in the table, but it's not in the sentence everyone quotes, and the paper's own radar figure visually foregrounds exactly the three tasks where GPT-four wins. That's a framing choice, not a missing data point, but it's still a choice that shapes how this gets cited.
+[G] Where I land: the dataset and the capability breakdown are the real contribution, and they hold up. The "beats humans" framing does more work than the evidence supports. It rests on an estimated, percentile-derived human baseline, a contamination risk that's only partially audited, and it quietly sidesteps the fact that on the benchmark's own aggregate, GPT-four is below the average human.
+[O] Zooming out, does this change how you'd read any exam-style benchmark going forward?
+[G] It should. Passing an admission exam and having general reasoning ability are not the same claim, and this paper's own results make that case better than its abstract does. Strong recall and pattern-matching on well-trodden question types, real gaps the moment a task needs several dependent reasoning steps.
+[S] There's a translation wrinkle worth naming too. LogiQA's English version is a translation of the original Chinese questions, so the English-versus-Chinese comparisons partly measure translation quality as much as cross-lingual reasoning.
+[G] Fair, and one more format point while we're here: dropping every subjective question for automatic scoring means the benchmark tests recognition and short-answer skill on these exams, not the open-ended argumentation the bar exam or a GMAT essay actually gates on. It's human-centric in source, not in format.
+[O] That's the tension in one line: human-centric where it's convenient to grade, not necessarily where it matters most.
+[G] If I leave listeners with one line: AGIEval's real contribution is a reproducible, bilingual exam corpus with the model outputs attached. Cite it for that and for the capability breakdown, not for the leaderboard verdict.
+[O] Mine is that watching a frontier model clear the SAT and the LSAT's reading section, even with every caveat attached, still marks a real point on the map of what these systems can do.
+[S] Mine is a habit to take from this one: when a benchmark's own aggregate number quietly disagrees with its headline sentence, go find the aggregate number. That's on the litsearch site, with the full task-by-task table and the contamination appendix. Thanks for listening.
