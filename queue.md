@@ -203,11 +203,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] malo-2014-good-debt
 - [x] maharana-2024-locomo
 - [x] shi-2022-mgsm
-- [ ] koh-2024-visualwebarena
-- [ ] zhuo-2024-bigcodebench
-- [ ] panickssery-2024-self-recognition
-- [ ] kim-2023-prometheus
-- [ ] zhu-2021-tatqa
+- [x] koh-2024-visualwebarena
+- [x] zhuo-2024-bigcodebench
+- [x] panickssery-2024-self-recognition
+- [x] kim-2023-prometheus
+- [x] zhu-2021-tatqa
 - [ ] chao-2024-jailbreakbench
 - [ ] lai-2022-ds-1000
 - [ ] jacobs-2019-measurement-fairness
