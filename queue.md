@@ -308,11 +308,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] huang-2024-crmarena
 - [x] ma-2024-spreadsheetbench
 - [x] zhu-2025-agentic-benchmarks
-- [ ] wang-2023-maud
-- [ ] deshpande-2025-trail
-- [ ] gao-2025-mcp-radar
-- [ ] li-2025-questbench
-- [ ] kapoor-2025-hal
+- [x] wang-2023-maud
+- [x] deshpande-2025-trail
+- [x] gao-2025-mcp-radar
+- [x] li-2025-questbench
+- [x] kapoor-2025-hal
 - [ ] kong-2026-mobileworld
 - [ ] gotting-2025-vct
 - [ ] he-2025-advancedif
