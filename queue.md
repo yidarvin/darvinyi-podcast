@@ -313,11 +313,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] gao-2025-mcp-radar
 - [x] li-2025-questbench
 - [x] kapoor-2025-hal
-- [ ] kong-2026-mobileworld
-- [ ] gotting-2025-vct
-- [ ] he-2025-advancedif
-- [ ] gautam-2025-refactorbench
-- [ ] li-2025-researchqa
+- [x] kong-2026-mobileworld
+- [x] gotting-2025-vct
+- [x] he-2025-advancedif
+- [x] gautam-2025-refactorbench
+- [x] li-2025-researchqa
 - [ ] zheng-2025-webguard
 - [ ] hupkes-2025-multiloko
 - [ ] chollet-2019-measure-of-intelligence
