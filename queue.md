@@ -238,11 +238,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] barres-2025-tau2-bench
 - [x] andriushchenko-2025-agentharm
 - [x] bai-2024-longbench-v2
-- [ ] chan-2024-mle-bench
-- [ ] greenblatt-2024-alignment-faking
-- [ ] bavaresco-2024-judge-bench
-- [ ] tan-2024-judgebench
-- [ ] xie-2023-pixiu
+- [x] chan-2024-mle-bench
+- [x] greenblatt-2024-alignment-faking
+- [x] bavaresco-2024-judge-bench
+- [x] tan-2024-judgebench
+- [x] xie-2023-pixiu
 - [ ] huang-2023-mlagentbench
 - [ ] polo-2024-tinybenchmarks
 - [ ] baker-2025-monitoring-reasoning
