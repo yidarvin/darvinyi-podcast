@@ -288,11 +288,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] pyatkin-2025-ifbench
 - [x] wijk-2024-re-bench
 - [x] modarressi-2025-nolima
-- [ ] kwa-2025-time-horizons
-- [ ] miller-2024-error-bars
-- [ ] miserendino-2025-swe-lancer
-- [ ] patwardhan-2025-gdpval
-- [ ] kim-2024-biggenbench
+- [x] kwa-2025-time-horizons
+- [x] miller-2024-error-bars
+- [x] miserendino-2025-swe-lancer
+- [x] patwardhan-2025-gdpval
+- [x] kim-2024-biggenbench
 - [ ] siegel-2024-core-bench
 - [ ] boubdir-2023-elouncovered
 - [ ] nathani-2025-mlgym
