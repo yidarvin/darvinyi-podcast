@@ -223,11 +223,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] rottger-2023-xstest
 - [x] zhan-2024-injecagent
 - [x] ruan-2023-toolemu
-- [ ] irving-2018-debate
-- [ ] he-2024-webvoyager
-- [ ] liu-2023-open-prompt-injection
-- [ ] wang-2023-pandalm
-- [ ] patil-2025-bfcl
+- [x] irving-2018-debate
+- [x] he-2024-webvoyager
+- [x] liu-2023-open-prompt-injection
+- [x] wang-2023-pandalm
+- [x] patil-2025-bfcl
 - [ ] rawles-2024-androidworld
 - [ ] chen-2025-cot-faithfulness
 - [ ] xu-2022-msc
