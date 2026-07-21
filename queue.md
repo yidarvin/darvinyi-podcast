@@ -213,11 +213,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] jacobs-2019-measurement-fairness
 - [x] li-2023-api-bank
 - [x] chalkidis-2021-lexglue
-- [ ] yue-2024-mmmu-pro
-- [ ] wei-2025-browsecomp
-- [ ] fu-2024-gptscore
-- [ ] li-2024-arena-hard
-- [ ] kim-2024-prometheus-2
+- [x] yue-2024-mmmu-pro
+- [x] wei-2025-browsecomp
+- [x] fu-2024-gptscore
+- [x] li-2024-arena-hard
+- [x] kim-2024-prometheus-2
 - [ ] guha-2023-legalbench
 - [ ] lambert-2024-rewardbench
 - [ ] rottger-2023-xstest
