@@ -293,11 +293,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] miserendino-2025-swe-lancer
 - [x] patwardhan-2025-gdpval
 - [x] kim-2024-biggenbench
-- [ ] siegel-2024-core-bench
-- [ ] boubdir-2023-elouncovered
-- [ ] nathani-2025-mlgym
-- [ ] luo-2025-mcp-universe
-- [ ] schulhoff-2023-hackaprompt
+- [x] siegel-2024-core-bench
+- [x] boubdir-2023-elouncovered
+- [x] nathani-2025-mlgym
+- [x] luo-2025-mcp-universe
+- [x] schulhoff-2023-hackaprompt
 - [ ] wu-2025-style-over-substance
 - [ ] zeng-2024-air-bench
 - [ ] maurya-2025-mrbench
