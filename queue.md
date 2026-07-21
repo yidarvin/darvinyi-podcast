@@ -253,11 +253,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] lin-2024-wildbench
 - [x] bowman-2022-scalable-oversight
 - [x] thakur-2024-judging-the-judges
-- [ ] glazer-2024-frontiermath
-- [ ] starace-2025-paperbench
-- [ ] map-2025-supergpqa
-- [ ] cui-2024-or-bench
-- [ ] zuo-2025-medxpertqa
+- [x] glazer-2024-frontiermath
+- [x] starace-2025-paperbench
+- [x] map-2025-supergpqa
+- [x] cui-2024-or-bench
+- [x] zuo-2025-medxpertqa
 - [ ] yang-2024-swe-bench-multimodal
 - [ ] merrill-2026-terminal-bench
 - [ ] du-2025-deepresearch-bench
