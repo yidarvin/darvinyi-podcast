@@ -198,11 +198,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] ganguli-2022-red-teaming
 - [x] yao-2024-tau-bench
 - [x] mangalam-2023-egoschema
-- [ ] chen-2021-finqa
-- [ ] schaeffer-2023-emergent-mirage
-- [ ] malo-2014-good-debt
-- [ ] maharana-2024-locomo
-- [ ] shi-2022-mgsm
+- [x] chen-2021-finqa
+- [x] schaeffer-2023-emergent-mirage
+- [x] malo-2014-good-debt
+- [x] maharana-2024-locomo
+- [x] shi-2022-mgsm
 - [ ] koh-2024-visualwebarena
 - [ ] zhuo-2024-bigcodebench
 - [ ] panickssery-2024-self-recognition

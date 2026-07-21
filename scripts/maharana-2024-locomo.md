@@ -1,0 +1,88 @@
+---
+slug: maharana-2024-locomo
+title: "Evaluating Very Long-Term Conversational Memory of LLM Agents"
+description: "A synthetic three-hundred-turn conversation benchmark shows even GPT-4-turbo remembers only about a third as well as a human — and handing it a bigger context window makes the forgetting worse."
+date: 2026-07-19
+guest_name: "Percy"
+guest_voice: "bm_george"
+---
+[S] Ask an AI assistant what you told it three months ago, and there's a real chance it just makes something up.
+[O] Or it surprises you — but until this paper, nobody had actually built a test hard enough to tell the difference.
+[S] Eighty-seven point nine versus thirty-two point one. Humans versus the best model tested, on exactly that question. That's not a small gap.
+[G] And the model that puts up that thirty-two point one is GPT-4-turbo — the model most people would bet on for exactly this task.
+[O] Welcome to Litsearch Audio, where an optimist, a skeptic, and a guest scholar take apart one paper at a time. Today it's "Evaluating Very Long-Term Conversational Memory of LLM Agents," the LoCoMo paper, from Adyasha Maharana and colleagues at UNC Chapel Hill, USC, and Snap Incorporated, published at ACL twenty twenty-four.
+[S] Joining us is Percy, who's studied this work closely. Percy, welcome to the show.
+[G] Thanks for having me. LoCoMo is worth the time — it's one of the first benchmarks to seriously ask whether a conversational agent remembers anything past a handful of chat sessions.
+[O] So what exactly was broken with how the field used to test this?
+[G] Every earlier long-dialogue benchmark quietly capped how long "long" was allowed to be. Datasets like MPChat and MMDialog are single image-grounded exchanges averaging fifty to seventy tokens. Daily Dialog and SODA run one session of maybe seven or eight turns, total.
+[S] That's not long-term memory, that's a single conversation.
+[G] Right. And even the datasets built specifically to study multi-session memory don't push much further. MSC keeps sessions a few days apart and stops around four or five sessions. Conversation Chronicles lets sessions span anywhere from a few hours to years apart, but both still max out around fifty-something turns per conversation.
+[O] So the whole field had effectively been testing something closer to short-term memory.
+[G] The paper's own framing is blunt about it — existing work evaluates model responses within contexts spanning no more than five chat sessions. Nobody had tested whether an agent tracks a relationship, a persona, a whole chain of life events, across dozens of sessions and real calendar months. Which is a lot closer to how people actually use a long-running assistant.
+[S] And the standard scoring toolkit doesn't fix that either. Lexical overlap, semantic overlap, consistency and contradiction checks — they all grade one response against one nearby piece of context.
+[G] Exactly. None of them tell you whether the agent integrated something said twenty sessions and three months ago. That's the gap LoCoMo is built to close.
+[O] So walk us through how you actually build a conversation that long. You can't just tell an LLM to improvise three hundred turns and expect it to stay consistent.
+[G] You can't, no. The pipeline starts with two virtual agents, each given a persona — a short four-or-five-sentence seed pulled from an existing dataset called MSC, which GPT-3.5-turbo then expands into a fuller persona: objectives, past experience, daily habits, relationships, basic demographics.
+[S] So the raw material is itself LLM-generated, on top of a small set of human-written seeds.
+[G] Correct. On top of the persona, the pipeline builds what the authors call a temporal event graph — up to twenty-five life events per agent, each with a date, linked by causal edges from earlier events to later ones. A separate model, text-davinci-003, generates these iteratively in batches of three, spread across a six-to-twelve-month window.
+[O] Give me a concrete example.
+[G] The paper's worked example is a persona named Jack who aspires to be a hotel manager. He enrolls in a hotel management course, and three months later that resurfaces as an excited social-media post. A separate causal thread has his passion for gaming lead to an invitation from a well-known gaming company. Two parallel plotlines, not one straight line.
+[S] That's the part I want to sit with — the conversation isn't improvised turn by turn, it's scripted by a graph, then dramatized.
+[G] That's a fair way to put it. Each agent reuses a generative-agent architecture from earlier work by Park and colleagues — a reflect-and-respond loop. After every session, the agent produces a short-term summary, and every individual turn also gets distilled into an "observation," an atomic assertion, filed into long-term memory. When the agent responds in a later session, it conditions on the latest summary, retrieved observations, the live conversation, the persona, and whichever event-graph events fall between the last session and this one.
+[O] So the memory architecture that generates the data is basically a preview of the memory architecture the paper later tests.
+[G] Yes — and that symmetry matters, we'll come back to it. There's also an image layer: agents can generate a caption, turn it into search keywords, pull a real image off the web, and react to images they receive.
+[S] And a human never touches any of this until the very end?
+[G] Only at the end. Human annotators edit for long-range consistency, remove or substitute irrelevant images, and check that dialogue stays grounded in the event graph. The authors report editing about 15 percent of dialogue turns and touching about 19 percent of the images.
+[O] So roughly 85 percent of the dialogue is untouched machine output.
+[G] That's the arithmetic, yes. What comes out the other end is fifty conversations, averaging just over three hundred turns and about nineteen sessions each — up to thirty-five sessions in the longest ones — spanning a few months of calendar time and roughly nine thousand tokens per conversation. Compared to the next-largest prior multi-session dataset, that's something like six times the turns and four times the sessions.
+[S] That scale really is the headline contribution, whatever else we end up arguing about.
+[G] I'd agree with that.
+[O] And once you have fifty of these, what do you actually measure?
+[G] Three tasks. Question answering, with over seven thousand questions split into five reasoning types — single-hop, multi-hop across sessions, temporal reasoning, open-domain or commonsense, and adversarial questions designed to be unanswerable. Second, event summarization — summarize what happened in a time window and score it against the ground-truth event graph with an adapted factuality metric. Third, multimodal dialogue generation — train a model on the raw conversations and score how well it predicts the next image-and-text response.
+[S] So question answering is the direct memory-retrieval test, summarization is the causal-and-temporal-reasoning test, and the multimodal task is the persona-consistency test.
+[G] That's a fair three-way split.
+[O] Let's get to the numbers. What does "still substantially behind humans" actually look like?
+[G] On question answering, humans score eighty-seven point nine, F one, overall. Among models with a normal, truncated context window, GPT-4-turbo leads at thirty-two point one — though the paper's own running text actually cites this same result as thirty-two point four, a small inconsistency with its own table. Behind it: GPT-3.5-turbo at twenty-two point four, Llama-2-Chat at seventeen point nine, Mistral at thirteen point nine.
+[S] So even the best model is landing at maybe a third of human performance.
+[G] A little more than a third, yes. Widening the context window helps the overall number — GPT-3.5-turbo climbs from twenty-four point one with a four-thousand-token window up to thirty-seven point eight at sixteen thousand tokens. But the gain is lopsided. Single-hop questions climb sharply. Adversarial questions — the ones that should get "this isn't in the conversation" as the answer — collapse from thirteen point one down to two point one as the window grows.
+[O] Wait — more context makes the model worse at knowing what it doesn't know?
+[G] That's exactly the finding. Compare that two point one to GPT-4-turbo's seventy point two on the same adversarial category, using only a four-thousand-token window. Longer context makes these models better at recalling facts and markedly worse at recognizing when a question has no answer.
+[S] That's a genuinely alarming failure mode for anything you'd actually deploy.
+[G] It's one of the paper's three headline findings — long-context models are prone to hallucinating rather than admitting uncertainty.
+[O] What about retrieval-augmented generation — does grabbing the right context from memory fix that?
+[G] Partially, and the retrieval unit matters more than how much you retrieve. Pulling from a database of atomic "observations" beats pulling raw dialogue turns or session summaries, at every depth tested. Top-five observations peaks at forty-one point four, F one, versus thirty-four point eight for the best raw-dialogue setting and thirty-two point five for summaries — all clearly ahead of the no-retrieval baseline of twenty-two point four.
+[S] Does more retrieval keep helping, though?
+[G] No, and that's the interesting part. Performance on observations actually degrades past the top five, back down to thirty-seven point eight at fifty retrieved observations. The authors attribute that to falling signal-to-noise ratio as more retrieved context gets added.
+[O] So there's a real sweet spot, not just "more retrieval is better."
+[G] Correct. On event summarization, there's a similarly counter-intuitive result: GPT-3.5-turbo actually edges out GPT-4-turbo on F one — forty-five point nine versus forty-five point one — even though GPT-4-turbo has noticeably higher precision. And the sixteen-thousand-token version of GPT-3.5-turbo underperforms its own four-thousand-token version, forty-five point nine down to thirty-nine point nine. More context window, again, does not automatically mean better long-range comprehension.
+[S] What kind of mistakes are these models actually making?
+[G] The manual error analysis surfaces five recurring types: missing information, hallucinated details, misreading tone — sarcasm or humor taken literally — wrong speaker attribution, and treating throwaway small talk as if it were a significant life event.
+[O] Okay, my optimist case. This is exactly the kind of paper that moves a field forward — it turned "does the model remember" from an assumption into a testable question, and the retrieval result hands you a working lever. Chunk memory as atomic observations, keep it small, and you get a real lift over both raw context and brute-force long context.
+[S] My skeptic case starts with where the data comes from. These aren't real conversations — they're generated by GPT-3.5-turbo agents, with event graphs from a separate OpenAI model, built on a persona architecture borrowed from someone else's earlier work. Three of the five question-answering baselines evaluated — GPT-3.5-turbo, its sixteen-thousand-token variant, and GPT-4-turbo — come from the same lab that generated the underlying text.
+[G] That's worth being precise about. It isn't classic train-test contamination — the QA gold answers are separately annotated, not copied straight from the generation process. But part of the leaderboard does share a stylistic and structural generation family with the benchmark itself. Mistral and Llama-2 don't get that advantage.
+[O] Does that actually move the headline number, or is it a footnote?
+[G] The paper doesn't isolate that variable, so I can't give you a number there — that's a genuine gap, not something I'm inferring beyond the text.
+[S] Second point: the human-verification layer is thinner than the framing suggests. About 15 percent of dialogue turns and 19 percent of images were touched by annotators. The rest — the large majority — is raw, unverified LLM output standing in as ground truth for a memory benchmark.
+[G] And there's no inter-annotator agreement reported for even that edited fraction. The appendix says annotators were in-house, and their demographics were, quote, "unable to be obtained due to the confidential nature of such information." No process metric fills that gap.
+[O] To be fair, the authors' own limitations section says almost the same thing — they write plainly that the dataset may not fully reflect the nuances of real-world online conversations. That's an unusually candid admission for a benchmark paper.
+[S] Candor doesn't fix validity. Third point: the metric. The authors' own limitations section flags that LLMs generate verbose answers even when asked for short phrases, which breaks F-one partial-match scoring — a problem they cite from earlier work on long-form question answering.
+[G] That's exactly where the adversarial collapse gets hard to fully trust. A correct adversarial answer is typically a short "not answerable" span. The swing from seventy point two down to two point one is real and striking, but with no human-verified refusal check reported alongside it, some fraction of that swing could be scoring-format sensitivity rather than pure capability loss.
+[O] How much, though — is that a rounding issue, or does it explain the whole effect?
+[G] The paper doesn't say, honestly. It's plausible the effect is mostly real and the metric adds noise on top, but nothing in the text lets me cleanly separate those two.
+[S] One more thing bothers me, about the retrieval numbers. Is the RAG advantage really about smart retrieval, or is "observations" just a cleaner, shorter context than raw dialogue or a full sixteen-thousand-token window? The paper compares retrieval units against each other, but never against a matched-length dense-context baseline.
+[G] That's a fair confound to flag. The paper shows observations beat raw dialogue and summaries at the same depth, but it doesn't isolate whether that's retrieval quality or just context length and cleanliness doing the work.
+[O] Which matters a lot, because "retrieval helps" and "shorter context is just better" point to very different engineering advice.
+[S] And step back even further — if the conversations are synthetic to begin with, does a memory score on them even generalize to real users?
+[G] That's the validity question underneath everything else. The event graph is the actual ground truth being tested against — the QA answers, the summaries, all of it trace back to a graph an LLM invented in the first place. That's a coherent test of whether a model can track a structured, LLM-authored narrative. Whether that predicts how a model handles a real person's messy, contradiction-filled, six-month text history is a separate question this design doesn't and can't answer.
+[O] So the benchmark might be measuring "can you follow a graph" more than "do you remember a relationship."
+[G] That's a sharper way to put it than the paper puts it itself, but I think it's fair. And one smaller point worth adding — the open-domain-knowledge category, one of the two hardest categories the paper highlights, is only two hundred eighty-five of the more than seven thousand questions, under 4 percent of the total, with no confidence intervals reported anywhere.
+[O] So a genuinely dramatic headline number is sitting on top of some real structural fragility.
+[G] I'd call it directionally right and numerically soft. The eighty-seven point nine versus thirty-two point one gap is almost certainly pointing at something real — long-term memory is a genuine, underexplored weakness. I wouldn't treat either number as a precise, reproducible measurement of exactly how large that gap is.
+[O] If this holds up, what actually changes?
+[G] It reframes "just make the context window bigger" as a red herring for a specific class of problem. In this benchmark, a wider window increased hallucination risk on adversarial questions, while a modest, well-chunked retrieval layer outperformed it. For anyone building a long-running assistant, that's a concrete engineering signal, not just an academic curiosity.
+[S] It also matters for how the evaluation community builds the next benchmark like this one. If you're going to generate synthetic long-horizon data to fill a real gap, you need to budget for human verification and inter-annotator agreement up front, not treat 15 percent editing as sufficient after the fact.
+[O] And it's a fresh, concrete example of exact-match and F-one metrics quietly biting a benchmark's own headline result — not a new lesson, but a useful one to relearn here.
+[G] The paper itself doesn't make claims that ambitious, but I think both of those lessons are fair to draw from what it actually shows.
+[G] My one-line takeaway: LoCoMo proved that long-term conversational memory is a real, measurable weakness in every model tested — the exact size of that gap just deserves more scrutiny than the headline number implies.
+[O] Mine: the retrieval result is the part I'd bet on holding up. Chunk memory into atomic observations, keep the retrieval small, and you beat both raw context and brute-force long context.
+[S] And mine: don't let one beautiful number distract you from a synthetic dataset, a same-family baseline, and a metric the authors themselves admit is shaky. Go read the full writeup on the litsearch site for the figures and the reasoning-category breakdown.
