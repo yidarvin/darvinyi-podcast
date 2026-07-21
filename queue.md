@@ -283,11 +283,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] jiang-2019-reasoning-shortcuts
 - [x] paglieri-2024-balrog
 - [x] kazemi-2025-big-bench-extra-hard
-- [ ] yen-2024-helmet
-- [ ] malik-2026-rewardbench2
-- [ ] pyatkin-2025-ifbench
-- [ ] wijk-2024-re-bench
-- [ ] modarressi-2025-nolima
+- [x] yen-2024-helmet
+- [x] malik-2026-rewardbench2
+- [x] pyatkin-2025-ifbench
+- [x] wijk-2024-re-bench
+- [x] modarressi-2025-nolima
 - [ ] kwa-2025-time-horizons
 - [ ] miller-2024-error-bars
 - [ ] miserendino-2025-swe-lancer
