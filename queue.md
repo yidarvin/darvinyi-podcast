@@ -298,11 +298,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] nathani-2025-mlgym
 - [x] luo-2025-mcp-universe
 - [x] schulhoff-2023-hackaprompt
-- [ ] wu-2025-style-over-substance
-- [ ] zeng-2024-air-bench
-- [ ] maurya-2025-mrbench
-- [ ] bean-2025-construct-validity
-- [ ] emmons-2025-cot-evade-monitors
+- [x] wu-2025-style-over-substance
+- [x] zeng-2024-air-bench
+- [x] maurya-2025-mrbench
+- [x] bean-2025-construct-validity
+- [x] emmons-2025-cot-evade-monitors
 - [ ] singh-2025-leaderboard-illusion
 - [ ] backlund-2025-vending-bench
 - [ ] huang-2024-crmarena
