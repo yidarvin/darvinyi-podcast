@@ -263,11 +263,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] du-2025-deepresearch-bench
 - [x] greenblatt-2023-ai-control
 - [x] koreeda-2021-contractnli
-- [ ] koo-2023-cobbler
-- [ ] zhuge-2024-agent-as-judge
-- [ ] white-2024-livebench
-- [ ] xie-2024-finben
-- [ ] min-2019-compositional-shortcuts
+- [x] koo-2023-cobbler
+- [x] zhuge-2024-agent-as-judge
+- [x] white-2024-livebench
+- [x] xie-2024-finben
+- [x] min-2019-compositional-shortcuts
 - [ ] macina-2023-mathdial
 - [ ] korbak-2025-cot-monitorability
 - [ ] freitag-2023-wmt23-metrics
