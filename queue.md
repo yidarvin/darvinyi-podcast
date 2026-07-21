@@ -243,11 +243,11 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] bavaresco-2024-judge-bench
 - [x] tan-2024-judgebench
 - [x] xie-2023-pixiu
-- [ ] huang-2023-mlagentbench
-- [ ] polo-2024-tinybenchmarks
-- [ ] baker-2025-monitoring-reasoning
-- [ ] meinke-2024-in-context-scheming
-- [ ] islam-2023-financebench
+- [x] huang-2023-mlagentbench
+- [x] polo-2024-tinybenchmarks
+- [x] baker-2025-monitoring-reasoning
+- [x] meinke-2024-in-context-scheming
+- [x] islam-2023-financebench
 - [ ] yang-2023-intercode
 - [ ] trivedi-2024-appworld
 - [ ] lin-2024-wildbench
