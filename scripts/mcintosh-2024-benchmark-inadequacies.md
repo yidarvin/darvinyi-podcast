@@ -1,0 +1,79 @@
+---
+slug: mcintosh-2024-benchmark-inadequacies
+title: "Inadequacies of Large Language Model Benchmarks in the Era of Generative Artificial Intelligence"
+description: "Seven researchers ran twenty three of the field's most-cited L-L-M benchmarks through an eleven-point audit and found every single one carrying at least one unresolved flaw — then our skeptic points out the audit itself never checked its own math."
+date: 2026-07-19
+guest_name: "Naomi"
+guest_voice: "bf_emma"
+---
+[S] Here's a number that should bother anyone who trusts a leaderboard. Twenty three widely-used benchmarks went through this paper's audit. Twenty three of them came out with at least one unresolved flaw.
+[O] Every single one? That sounds more like a rhetorical flourish than a finding.
+[S] It's not rhetoric, it's a documented count, and two of the flaws showed up in twenty two of the twenty three: response variability, and the field's inability to tell genuine reasoning apart from a model just gaming the test.
+[O] Welcome to Litsearch Audio, where an optimist, a skeptic, and a visiting scholar take apart one paper at a time. I'm the optimist.
+[S] And I'm the skeptic. Today's paper turns the critical lens back on the entire benchmark industry — including, we'll get to this, its own methodology.
+[O] The paper is "Inadequacies of Large Language Model Benchmarks in the Era of Generative Artificial Intelligence," by Timothy McIntosh and six colleagues, published in IEEE Transactions on Artificial Intelligence in twenty twenty four. Joining us is Naomi, who's read this one closely. Naomi, welcome.
+[G] Thanks for having me. This paper is less about any one benchmark and more an audit of the entire cottage industry that builds them.
+[S] Naomi, set the scene for us. Why did the authors think this audit needed doing?
+[G] Start with the scale. By late twenty twenty three there were over seven hundred thousand L-L-Ms listed on Hugging Face alone, plus a wave of commercial models. Everyone wanted a way to rank them, so researchers kept minting their own benchmarks — new tasks, new metrics, often with unstated assumptions about what counts as valid.
+[O] Which, to be fair, is what a young field looks like. Aviation and automotive testing didn't start with tight regulation either.
+[G] That's the exact comparison the paper makes. Aviation and automotive testing have decades of regulation and public consensus behind them. L-L-M benchmarking has neither. Into that vacuum, the authors argue, the word "benchmark" got applied more liberally than it warranted — a self-declared label stuck onto test sets that were never checked against two properties they treat as non-negotiable.
+[S] Which are?
+[G] Functionality — does the benchmark actually measure the capability it claims to — and integrity — can a model game it, through memorization, overfitting, or exploiting surface patterns, and still score well.
+[O] So the complaint isn't "this specific benchmark is bad." It's "the field never agreed on what checking a benchmark even means."
+[G] Right, and that's the gap. Earlier critiques picked at one thread at a time — a paper on prompt sensitivity, a paper on contamination, a paper on cultural bias — with no shared framework for triaging which problems hit which benchmarks, or how badly. Of the twenty three benchmarks the authors eventually audit, only a handful had even passed peer review at the time of writing. Most of the field's yardsticks were unrefereed preprints.
+[S] That last detail is going to come back and bite the paper itself. We'll get there.
+[O] Let's get into the framework first. Naomi, where does "People, Process, Technology" come from?
+[G] It's borrowed wholesale from cybersecurity risk assessment. The authors argue a benchmark's trustworthiness depends on three things: who builds and judges it — People, the diversity and expertise of developers and evaluators; how consistently it's constructed and run — Process, standardization, prompt engineering, how fast it can iterate; and what its technical infrastructure can and can't measure — Technology, things like response variability and installation cost.
+[S] Cybersecurity risk assessment is an odd toolkit to borrow for grading multiple-choice tests. Does the metaphor earn its keep, or is it decoration?
+[G] It earns some of it. The useful part is that it forces the audit past pure technical soundness. Most prior benchmark critiques only asked whether the model got the right answer. People-Process-Technology also makes you ask who decided what counts as right, and whether the process that produced the test set was itself sound.
+[O] And they cross that with the two pillars, functionality and integrity.
+[G] Exactly — three domains crossed with two pillars gives eleven concrete inadequacy categories, six technological, three processual, two human. Each one is narrow enough to check off against a real benchmark: does the issue show up, did the original authors resolve it, and if not, did they at least acknowledge it.
+[S] Walk me through how a benchmark actually gets scored on this.
+[G] Every benchmark goes through the same flowchart for each of the eleven categories. Does this inadequacy appear at all? If yes, did the original authors resolve it? If they didn't resolve it, did they at least admit it's a problem? That collapses to a three-way code — a checkmark for present and never acknowledged, a triangle for acknowledged but still unresolved, an X for not present or considered handled.
+[O] And from that grid they build one summary number.
+[G] Prevalence. For each inadequacy, count how many of the twenty three benchmarks scored a checkmark or a triangle, divide by twenty three. That single ratio drives every headline number in the results section.
+[S] Who's actually doing the scoring? That's always my first question about a coding scheme like this.
+[G] The seven co-authors. There's no mention anywhere in the method section of a second, independent coder, a blinded pass, or an inter-rater agreement statistic.
+[S] So seven people are grading twenty three benchmarks against eleven criteria apiece, and nobody is checking anybody else's judgment calls.
+[G] That's an accurate read of what the method section actually says, yes.
+[O] Hold that thought, I want to come back to it in the debate. Naomi, which twenty three benchmarks made the cut?
+[G] A structured literature review running up to October twenty twenty three, filtered for benchmarks explicitly built to evaluate L-L-Ms with real academic or technical adoption. General-purpose suites like MMLU, BIG-bench, HELM, AGIEval, and PromptBench, plus domain-specific ones — HumanEval for code, LegalBench for law, MultiMedQA for medicine, FLUE for finance, a cluster of tool-use and agent benchmarks including ToolAlpaca, ToolBench, AgentBench, and API-Bank, and HaluEval for hallucination.
+[O] Okay, give me the headline result.
+[G] Every one of the twenty three carried at least one unaddressed or under-addressed inadequacy. Two were nearly universal, hitting twenty two of the twenty three: response variability under standardized evaluation, and the inability to tell genuine reasoning apart from technical optimization.
+[S] Response variability — what does that actually look like in practice? "Variability" can mean a lot of things.
+[G] The concrete example the paper cites: reformatting a multiple-choice answer indicator from a letter in parentheses to a letter in brackets, or just adding extra whitespace, has been shown to shift measured accuracy by roughly five percent. A purely cosmetic input change moving the scoreboard.
+[O] Five percent from punctuation alone is genuinely alarming, I'll grant that.
+[G] The reasoning-versus-optimization issue is related but distinct — it's about whether getting the right answer reflects understanding or pattern exploitation. HumanEval tests functional correctness on coding problems through unit tests, which the authors argue doesn't necessarily capture reasoning across novel real-world scenarios. LegalBench applies fairly generic benchmark structures to specialized legal reasoning, which they say may let a model optimize for benchmark-shaped patterns rather than genuine legal comprehension.
+[S] And the rarest issue on the list?
+[G] Benchmarks using an L-L-M to generate or judge their own evaluation data — nine of the twenty three. The sharpest example is M3KE, a Chinese-language knowledge benchmark that used ChatGPT-generated multiple-choice questions. That bakes ChatGPT's own biases straight into a test later used to grade other models, potentially including ChatGPT itself.
+[O] That one's a genuinely good catch. Circularity like that should worry anyone building an eval.
+[G] The benchmarks weren't uniform in how badly they scored, either. HaluEval, the hallucination-detection benchmark, was the only one with zero checkmarks across all eleven categories — its four flagged issues were all at least acknowledged by its own authors. BOLAA, an agent-orchestration benchmark, came close behind with a single unacknowledged issue.
+[S] And the worst performers?
+[G] FLUE, for financial sentiment, M3KE, and AgentBench each racked up eight or more unacknowledged inadequacies out of eleven, despite testing completely unrelated capabilities — which the authors read as a sign the problem is structural, not domain-specific. On installation cost specifically, API-Bank is the concrete illustration: it required integrating seventy three real-world APIs, which the authors argue works against anyone trying to reproduce it cheaply.
+[O] Seventy three APIs is a genuine barrier to entry, not a nitpick. That's "only a well-funded lab can even run this eval."
+[S] Which undercuts its own claim to be a fair, broadly usable yardstick.
+[O] Here's my strongest case for this paper. It's a genuinely useful map of where the field's blind spots were sitting in late twenty twenty three, and it's aged well. The two headline findings, response variability and reasoning versus optimization, have been independently confirmed since, by contamination-detection work, by LiveBench, by the whole agentic-benchmark wave that followed. That's not luck. That's a paper correctly diagnosing a real problem before most of the field admitted it was sick.
+[S] I'll grant the diagnosis. I won't grant the instrument that produced it. This isn't an experiment, nothing is run against a model. It's a documentation review — did the original benchmark's paper mention and resolve each issue — coded entirely by the seven authors, no second coder, no inter-rater statistic, nothing. The Limitations section admits it outright: their own words are that the analysis "inherently carries our subjective bias," and where they couldn't tell if a study had addressed something, they "gave the benefit of the doubt."
+[O] That's honest disclosure, though. Most papers don't admit that much.
+[S] Honest disclosure doesn't make the numbers replicable. Every prevalence figure in this paper is one team's unreplicated judgment call. Later benchmark-audit work does this properly — a protocol with two reviewers plus a tiebreaker, or a twenty nine reviewer construct-validity review that reports an actual agreement statistic. Those treat inter-rater reliability as a baseline requirement. This paper treats it as optional.
+[G] I can add a concrete example of exactly that gap biting the paper itself. One section states six of the twenty three surveyed studies were peer-reviewed at the time of writing. The Limitations section, later in the same paper, says five of twenty three. Small discrepancy, but it lands on the one number meant to demonstrate how unrigorous the rest of the field is.
+[S] That's not a nitpick either. That's the paper failing its own test.
+[O] Fair. Though I'd still separate "the count has a small internal inconsistency" from "the underlying finding is wrong." Six versus five doesn't change the shape of the argument.
+[G] There's a second issue worth putting on the table, a scope mismatch rather than an arithmetic one. HumanEval is marked with a checkmark, present and unacknowledged, on "tension between helpfulness and harmlessness." But HumanEval's stated purpose is functional correctness of generated code, checked against unit tests, nothing more. It's not obvious a benchmark that never claimed to test harmlessness should be dinged for failing to resolve it.
+[O] Which is exactly the kind of category error the paper accuses the benchmarks themselves of making — one yardstick applied uniformly, regardless of what a thing was actually built to measure.
+[S] And because the review stopped at documentation, none of the integrity claims, gaming, memorization, overfitting, are ever empirically demonstrated against an actual running model. They're argued from plausibility and cited precedent.
+[G] That's accurate. The authors say explicitly they chose not to attempt reproducing results from any of the twenty three studies, citing the time required and the risk that ongoing model updates would make results stale mid-review. Defensible as a practical call, but it means the entire integrity half of the paper is argued, not measured.
+[O] So where does that leave the verdict? Because I still think the diagnosis holds up.
+[G] Going a little beyond just restating the paper — my read is that the diagnosis holds up remarkably well with hindsight, and the instrument that produced it is exactly the kind of unvalidated, single-team process the paper's own framework would flag if it were reviewing someone else's benchmark. Both things are true at once.
+[S] What do the authors actually propose instead of "more scrutiny, please"?
+[G] Moving from static benchmarks to what they call behavioral profiling plus regular post-deployment audits. They use a hiring analogy: a benchmark is the initial screening test, filtering out clearly unsuitable candidates. Behavioral profiling is the interview stage, probing adaptability and ethical reasoning in more realistic scenarios. Regular audits after deployment are the probation period, catching drift between how a model scored at launch and how it actually behaves later.
+[O] That's a real proposal, but it's also explicitly future work. They didn't build or test any of it here.
+[G] Correct, and they say so themselves. It's a direction, not a system.
+[S] Given the October twenty twenty three cutoff, none of the twenty three benchmarks even touch agentic environments, reinforcement-learning-verified rewards, or L-L-M-as-judge, Arena-style evaluation — all of which came to dominate within about a year.
+[O] Worth saying plainly: this is a snapshot of first-generation, exam-style benchmarks. It's not a verdict on how the field evaluates models today.
+[G] That's the right frame. Treat it as an audit of a particular era of benchmarking, one whose core failure modes, variability, reasoning versus optimization, contamination, turned out to generalize forward even after the benchmarks themselves got replaced.
+[S] Good place to land it before we wrap.
+[G] If there's one line to take from the paper itself, it's this: in twenty twenty three, calling something a benchmark was easier than making it trustworthy, and almost nobody was checking the difference.
+[O] Mine: the diagnosis has aged better than almost any critique paper from that period I can think of — the exact failure modes it flagged are the ones the field spent the next two years scrambling to fix.
+[S] Mine: read the numbers as directional, not precise. A seven-person, unreplicated documentation review that disagrees with itself about how many of its own subjects were peer-reviewed shouldn't be quoted as a hard statistic, it should be quoted as "worth checking yourself." For the figures and the full writeup, head to the Litsearch site. Naomi, thank you.
+[G] Thank you both, this was a fun one to dig through.
