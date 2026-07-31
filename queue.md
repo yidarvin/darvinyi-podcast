@@ -342,3 +342,4 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] liu-2023-logieval
 - [x] zhou-2018-document-grounded
 - [x] nematzadeh-2018-tom-qa
+- [x] lu-2025-agentrewardbench
