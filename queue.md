@@ -343,3 +343,10 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] zhou-2018-document-grounded
 - [x] nematzadeh-2018-tom-qa
 - [x] lu-2025-agentrewardbench
+- [x] chen-2025-robotwin2
+- [x] osband-2020-bsuite
+- [x] wang-2019-mbrl-benchmark
+- [x] enevoldsen-2025-mmteb
+- [x] zhu-2024-dyval
+- [x] hu-2020-xtreme
+- [x] pagnoni-2021-frank

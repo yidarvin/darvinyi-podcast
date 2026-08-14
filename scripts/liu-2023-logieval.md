@@ -1,0 +1,97 @@
+---
+slug: liu-2023-logieval
+title: "Evaluating the Logical Reasoning Ability of ChatGPT and GPT-4"
+description: "An April 2023 audit of logical reasoning that built the perfect setup for a contamination test, found the gap, and never named the suspect — plus the arithmetic in its own tables that contradicts two of its headline sentences."
+date: 2026-07-28
+guest_name: "Nathaniel"
+guest_voice: "am_puck"
+---
+[O] On the ReClor logic benchmark, the GPT-4 API build in this paper scores 87.20 percent. The fine-tuned RoBERTa baseline the authors train themselves gets 55.01 percent, and the human average they report for that dataset is 63.00 percent. A prompted model, with no task-specific training, clearing both.
+[S] On the AR-LSAT test set, in the same table, from the same model on the same week through the same harness, that number is 33.48 percent. The interesting quantity here is not the 87. It is the 53.72-point drop between two columns of one row.
+[O] And to their credit, the authors went looking for that drop deliberately. They constructed an out-of-distribution split for exactly this purpose, to check whether a score on a famous benchmark predicts a score on fresh material.
+[S] They built the instrument, they got the reading, and then they labelled the reading "out-of-distribution difficulty" and moved on. The word that never appears anywhere in this paper is contamination.
+[O] This is Litsearch Audio. Today's paper is Evaluating the Logical Reasoning Ability of ChatGPT and GPT-4, by Hanmeng Liu, Ruoxi Ning, Zhiyang Teng, Jian Liu, Qiji Zhou, and Yue Zhang, spread across Westlake University, Zhejiang University, Nanyang Technological University, and Fudan. It went up on arXiv in April twenty twenty-three, weeks after GPT-4 shipped.
+[S] It is on the docket for two reasons that pull in opposite directions. It is one of the earliest focused single-capability audits of the GPT-4 era, and it is a clean case study in how fast an eval paper's numbers rot while its design survives.
+[O] Nathaniel, welcome. You have read this one closely, including the tables, which is where a lot of this episode is going to live.
+[G] Happy to be here. And that is the right instinct, because this paper has a genuine and slightly unusual property. Several of its prose sentences do not match the numbers printed two inches above them, and one of those mismatches gets a comparison backwards. So yes, the tables are the paper.
+[S] Set the stage first. April twenty twenty-three. What did the field actually not know?
+[G] GPT-4 had launched in March, marketed explicitly as more advanced at reasoning. There were broad ChatGPT audits already out, from Bang and colleagues and from Qin and colleagues, and this paper cites both. But those covered many task families at once. Nobody had isolated logical reasoning and run it end to end against a fine-tuned baseline and against reported human numbers.
+[O] And the existing logic benchmarks were built for a different world.
+[G] Exactly the pressure point. LogiQA and ReClor were both released in twenty twenty, and they were designed for the pre-train-then-fine-tune regime. You train RoBERTa on the training split, you test on the held-out split, you report accuracy. Neither was designed for a zero-shot or one-shot prompting regime, and neither was designed to be run against a model whose pre-training corpus you cannot inspect.
+[S] Which is where my objection to the whole genre starts, but let us get the method down first. What did they actually build?
+[G] Two task families. Multi-choice reading comprehension covers five columns. LogiQA two point zero English test, fifteen hundred and seventy-two items. The Chinese version of the same test set, fifteen hundred and ninety-four. ReClor's dev set, five hundred items, and they use dev because ReClor withholds the gold labels on its test set. AR-LSAT's test set, two hundred and thirty items. And a LogiQA two point zero out-of-distribution split they built themselves, thirteen hundred and fifty-four items, drawn from Chinese Civil Servant Exam questions from twenty twenty-two onwards.
+[O] So the out-of-distribution split is the new artifact.
+[G] It is one of two new artifacts, and this is worth being precise about because it gets garbled in secondhand summaries. AR-LSAT is not new to this paper. It is Wang and colleagues, twenty twenty-two, a pre-existing dataset of LSAT analytical-reasoning logic games. What this paper genuinely contributes is the twenty twenty-two-onwards out-of-distribution split, and the reformatting of everything else into a single-turn prompt style.
+[S] And the second family is natural language inference.
+[G] Six datasets. ConTRoL, eight hundred and five items, contextual reasoning over long texts. ConjNLI, six hundred and twenty-three, inference over conjunctive sentences. HELP and MED, both monotonicity-reasoning sets. TaxiNLI, ten thousand and seventy-one items, which is MNLI re-annotated with fine-grained logical categories. And MNLI dev itself, included as a non-logic-specific comparison point precisely because TaxiNLI is drawn from it.
+[O] What are the baselines?
+[G] RoBERTa-base, fine-tuned for five epochs on each dataset's own training split, is the sole model baseline. Alongside that they report a human average and a human ceiling per dataset. ChatGPT is GPT-3.5 Turbo, the March twenty-third snapshot, queried through OpenAI's Evals framework with one in-context example appended to every call to keep the output format controlled.
+[S] And GPT-4 is queried two different ways, which is the part I want flagged loudly.
+[G] Correct. GPT-4 goes through the API, the default GPT-4 build dated March fourteenth, over the full test sets. And separately it is tested by hand through the consumer Chat UI on two Plus accounts, which covers only a manually-tested subsample, somewhere between eighty-five and a hundred and twelve items per dataset.
+[S] Against full test sets of two hundred and thirty to fifteen hundred and ninety-four. And both of those go into the same table, as adjacent rows, with no reliability caveat separating them.
+[G] That is a fair characterisation of the table's layout, yes. The parenthetical counts are printed, so a careful reader can see it, but the rows sit side by side.
+[O] Give me the multi-choice results.
+[G] ChatGPT beats the fine-tuned RoBERTa baseline on four of the five multi-choice datasets. 52.37 against 48.76 on LogiQA two point zero test. 53.18 against 35.64 on the Chinese version, which is the widest gap in that row. 57.38 against 55.01 on ReClor. And 38.44 against 33.22 on the new out-of-distribution split. It loses on AR-LSAT, 20.42 against RoBERTa's 23.14.
+[S] Both of which are essentially at the floor. AR-LSAT has five options, not four, so chance is twenty percent, not twenty-five.
+[G] Right, and the paper says so explicitly in its dataset section. Which makes ChatGPT's 20.42 on that column a chance-level result, and RoBERTa's 23.14 barely above it.
+[O] And GPT-4 through the API?
+[G] Beats RoBERTa on all five. 72.25 on LogiQA two point zero test, 70.56 on the Chinese version, 87.20 on ReClor, 33.48 on AR-LSAT, and 58.49 on the out-of-distribution split.
+[O] So the ReClor number is the headline. Highest score in the table.
+[G] It is not the highest score in the table, and this is the single most-repeated error about this paper, so let me sort the column. ReClor dev, top to bottom. Human ceiling, 100.00. GPT-4 through the Chat UI, 92.00, on a hand-tested sample of one hundred items. GPT-4 through the API, 87.20. Human average, 63.00. ChatGPT, 57.38. RoBERTa, 55.01.
+[S] So it is third.
+[G] It is third in the printed column. What the paper itself actually claims is narrower and defensible. Its words are that 87.20 is the highest score among all three models, meaning RoBERTa, ChatGPT, and the GPT-4 API. That is true. The over-claim is downstream, from people who read the sentence without the qualifier.
+[O] I will still take 87.20 against a reported human average of 63.00 on an LSAT-derived logic benchmark. That is a real result.
+[S] Take it and then look one column right. Nathaniel, quantify the drop properly for me. Not vibes, actual gaps.
+[G] For the GPT-4 API row, four gaps, sorted. LogiQA test to the out-of-distribution split, 13.76 points. ReClor to the out-of-distribution split, 28.71. LogiQA test to AR-LSAT, 38.77. ReClor to AR-LSAT, 53.72. So roughly a fourteen-to-fifty-four-point envelope, depending on which pair you take.
+[S] Fourteen to fifty-four. That is not a rounding artefact. That is the model being a different model depending on which logic benchmark you hand it.
+[O] With the caveat that AR-LSAT is genuinely harder material and has a lower chance floor.
+[G] Both true. And both AR-LSAT and the out-of-distribution split leave GPT-4 below the reported human averages on those datasets, which are 56.00 and 83.00 respectively.
+[S] Now the inference results, because I have heard this paper summarised as "both models are weaker on NLI" and I want to know if the tables support that.
+[G] They do not, and this is the second correction worth making carefully. Take ChatGPT through the API. Its six inference scores average 52.55, with a median of 55.21. Its five multi-choice scores average 44.36, with a median of 52.37. So on both measures, ChatGPT is higher on inference than on reading comprehension, not lower.
+[O] That is the opposite of the received summary.
+[G] For GPT-4 the two families are effectively a wash. Inference averages 64.78, multi-choice averages 64.40. And GPT-4's single best score anywhere in this paper is 89.42, on MED, which is an inference dataset.
+[S] So where does the paper's own claim come from?
+[G] The paper says GPT-4 does not perform highly on logical-reasoning inference compared to multi-choice reading comprehension. Read as an average across the tables, the arithmetic does not support it. What is defensible is the spread. GPT-4 gets 89.42 on MED and 72.71 on ConjNLI, but only 46.01 on HELP and 56.40 on ConTRoL. That variance is real.
+[O] And there is a chance-baseline correction here too, in the other direction.
+[G] There is, and it matters. The inference sets are three-way, so chance is roughly thirty-three percent. The multi-choice sets are four-way at twenty-five percent, or five-way at twenty percent for AR-LSAT. So cross-family comparison flatters the inference numbers by construction. Any honest version of this comparison has to say so, and the paper does not.
+[S] What about MNLI, where RoBERTa wins?
+[G] RoBERTa gets 90.02 on MNLI dev against ChatGPT's 55.40 and GPT-4's 64.08. That is the one place RoBERTa dominates, and it is not a reasoning result. It is a fully-supervised model evaluated on the distribution it was fine-tuned on. The paper reads it as evidence the GPT models are not optimised for three-label inference, which is a reasonable reading, but it is worth saying out loud that MNLI is RoBERTa's home field.
+[O] There are three smaller experiments too, and I think the in-context one is underrated.
+[G] Twenty randomly selected instances from each of two datasets. Asked inside a single conversation window, GPT-4 gets nine of twenty on the out-of-distribution split and thirteen of twenty on ConTRoL. Asked in a fresh window each time, five of twenty and seven of twenty. No feedback is given during the procedure.
+[S] Twenty items. That is a coin-flip's worth of statistical power, and the paper reports no confidence intervals anywhere in it.
+[O] Agreed on the power, but the direction is consistent across both datasets and the effect is large. It is a hypothesis worth someone's time, and it is honestly labelled as an exploratory probe.
+[G] The chain-of-thought run is a little stronger. Same one hundred and twelve out-of-distribution instances as the Chat UI manual test. Without the step-by-step prompt, fifty-four correct. With it, sixty-one correct. Same subsample, same dataset, so that is a legal paired comparison, and it is seven extra questions.
+[S] All right, the debate. My deflationary case is short and it has four parts.
+[O] Let me go first, because I want mine on the record before you set fire to it. Nine of eleven benchmarks. Prompted ChatGPT, no task-specific training, beats a per-dataset fine-tuned RoBERTa on nine of the eleven datasets in this paper. GPT-4 makes it ten of eleven. In April twenty twenty-three that was a regime change, and this paper is one of the places you can see it happening in a table.
+[S] I do not dispute the regime change. Here are the four things. One, the AR-LSAT prompt. The paper's own template, printed in the appendix, instructs the model to answer with one of four labels, A through D. AR-LSAT questions have five options. Nothing in the paper describes an adapted five-label version.
+[G] That is accurate, and it is a genuine methodological hole. If the answer key is four-way and the questions are five-way, the reported AR-LSAT accuracy is measuring something other than what the column header says.
+[S] Two, HELP is evaluated on its train split. Stated plainly in the dataset section. In a paper whose central argument is about generalisation.
+[G] Also accurate, and also unexplained. HELP is a generated monotonicity dataset, so the train split is not contaminated in the fine-tuning sense for a model that never saw it. But it is a strange choice to leave uncommented in this specific paper.
+[S] Three, the prose contradicts the tables. Nathaniel, this is your area.
+[G] Three separate slips, one of which is substantive. The paper writes that ChatGPT's out-of-distribution accuracy of 38.44 is, quote, still lower than that of RoBERTa base. RoBERTa's number in that same column, in the table on the previous page, is 33.22. So 38.44 is higher, not lower. The sentence gets the direction backwards.
+[O] That is not a typo. That is an inverted comparison in a results section.
+[G] The other two are numeral slips. The prose prints 53.37 for ChatGPT on LogiQA test where the table reads 52.37, and 42.31 on HELP where the table reads 42.13. Neither of those flips a direction. Treat the tables as authoritative throughout.
+[S] And four, the one I care most about. Contamination is never mentioned. Not once.
+[G] Here I want to be careful, because the obvious version of this argument is slightly wrong and I have seen people make it. The clean anchor is ReClor. ReClor was released in twenty twenty, comfortably before the training cutoffs commonly reported for these two model snapshots. AR-LSAT is twenty twenty-two, and the out-of-distribution split is built from twenty twenty-two-onwards exam material. So you have a genuine pre-cutoff versus post-cutoff bracket sitting inside one table.
+[O] And the sloppy version of the argument is?
+[G] Reaching for LogiQA as the pre-cutoff anchor. The evaluation here uses LogiQA two point zero, not the twenty twenty original, and the two point zero update was itself published in twenty twenty-three. So its pre-cutoff status is murky. Anchor the memorisation argument on ReClor and it is clean. Anchor it on LogiQA and it is contestable.
+[S] Either way, the experiment needed to test it was already built. You have a familiar pre-cutoff benchmark, you have post-cutoff material, you have both scores. All that is missing is a verbatim-recall probe and a paragraph.
+[G] I will score that one to the skeptic without reservation. The paper attributes the entire gap to out-of-distribution difficulty and never lists memorisation as a competing explanation. That is the clearest missed opportunity in it.
+[O] Let me get one back. The out-of-distribution construction itself is the durable part, and it is durable precisely because it is a method, not a number. Build a split from material that postdates the model, compare it against the famous benchmark, and read the delta. That is reusable against any model, forever.
+[G] Agreed, and I would score that one to the optimist. The design outlives the scores.
+[S] Then let us talk about what is actually released, because I think that claim is softer than the writeups suggest.
+[G] It is softer. The paper names the prompt-style suite LogiEval in its abstract and in its second listed contribution, and gives a repository for it. But the data release it actually describes in the dataset section points at the LogiQA two point zero repository, and the paper never enumerates what LogiEval contains. So "here is a packaged harness with all eleven datasets in it" is an inference from the framing, not something the paper documents.
+[O] So the honest statement is that they named a suite and pointed at a repository.
+[G] That is the honest statement. Whether the artifact matches the ambition is something you verify by going and looking, not by reading the paper.
+[S] Which brings me to time. What is even left of this paper three years on?
+[G] Split it cleanly. The specific scores are dead weight. GPT-3.5 Turbo from March twenty twenty-three and the default GPT-4 build from March fourteenth, twenty twenty-three, are two long-superseded snapshots, and these particular benchmarks have been comprehensively saturated since. Nobody should cite 87.20 on ReClor as a fact about language models.
+[O] But the methodology is not dated at all.
+[G] The methodology is the paper. In-distribution versus out-of-distribution, with the out-of-distribution half constructed from post-cutoff material, is now standard practice for exactly the reason this paper stumbled onto and did not name. And the finding underneath it, that performance on a well-known benchmark does not predict performance on fresh material of the same kind, has been reconfirmed many times since.
+[S] I will concede more than I expected to. The design is good. The instrument is pointed at the right thing. What I object to is a results section that had the contamination story in its own tables and wrote around it.
+[O] And what I would say back is that in April twenty twenty-three, being the group that built the post-cutoff split at all was the contribution. Naming the mechanism was somebody else's paper, and somebody else wrote it.
+[G] Both of those can be true. My read, going a step beyond the text, is that this reads like a fast report written under real time pressure, with early API access and a deadline. That explains the prose slips, the mixed Chat UI and API rows, and the missing contamination paragraph. It does not excuse them, but it locates them.
+[S] Takeaway from me. Read the tables, not the sentences. Two of this paper's summary claims do not survive its own arithmetic, and one of them is a direction error.
+[O] Mine is that the out-of-distribution split is the transferable idea here, and it costs almost nothing to copy. If you are evaluating anything today, build the post-cutoff half of your benchmark. This paper shows you what the delta looks like when you do.
+[G] And the paper's own takeaway, stated fairly. Prompted ChatGPT and GPT-4 beat a per-dataset fine-tuned RoBERTa on most of these logical reasoning benchmarks, but both drop sharply on newly released and out-of-distribution material, and neither is close to the reported human ceilings on the hard sets.
+[O] The full writeup is on the litsearch site, with the figures, both results tables, and the eval critique laid out properly. Nathaniel, thank you.
+[S] Worth your time, as long as you go in knowing which half of it has expired.

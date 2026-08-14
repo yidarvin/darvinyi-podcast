@@ -3,3 +3,6 @@ sources/
 feed.xml
 *.wav
 .DS_Store
+render-*.log
+render-*.rc
+render-*.pid

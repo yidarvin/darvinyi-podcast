@@ -1,0 +1,129 @@
+---
+slug: osband-2020-bsuite
+title: "Behaviour Suite for Reinforcement Learning"
+description: "DeepMind's b suite replaces the single benchmark score with a seven axis capability profile built from thirteen targeted environment designs and twenty three scored experiment instances. The worked example is clean, the honesty about scope is unusual, and there is not one confidence interval anywhere in the paper."
+date: 2026-08-01
+guest_name: "Rosalie"
+guest_voice: "af_sarah"
+---
+[O] A benchmark paper from DeepMind with fourteen authors on it, and not a single numeric results table anywhere in the document. Every quantitative claim is a plot with an axis running zero to one.
+[S] That is either the entire point or the entire problem, and after reading it twice I still cannot decide which.
+[O] It is the point. The argument is that one number tells you how good your agent is and tells you nothing about why it failed. So they threw out the number and kept the profile.
+[S] And I am going to argue that a suite whose whole premise is precise, standardized measurement contradicts itself in three checkable places, and does not report a confidence interval on a single score in the paper.
+[O] Welcome to Litsearch Audio. Today we are on the Behaviour Suite for Reinforcement Learning, b suite for short.
+[S] Ian Osband and colleagues at DeepMind. Fourteen authors, including Richard Sutton, David Silver, Csaba Szepesvari, Benjamin Van Roy and Hado Van Hasselt. It went up on arXiv in August of twenty nineteen and was published at I C L R twenty twenty.
+[O] And with us is Rosalie, who has been through this one down to the appendix tables. Welcome. Set the table for us.
+[G] Thank you. Before anything else, one framing point that governs how you should hear every result today. The paper says explicitly that this is not a replacement for grand challenge undertakings in artificial intelligence, or a leaderboard to climb. The output is a per capability score profile. It is a diagnostic instrument. It never ranks agents overall, and it never claims to.
+[S] Which is convenient, because it means half the criticisms I would normally bring are pre answered.
+[G] Some of them are. Not all of them. I will tell you which ones survive.
+[O] Start with the gap. What was wrong with R L benchmarking in twenty nineteen?
+[G] The field had been moving in one direction for years, toward more complexity. The Arcade Learning Environment turned dozens of Atari twenty six hundred games into a shared testbed. Continuous control suites followed, then model based reinforcement learning benchmarks, then rich three D environments like DeepMind Lab. The paper describes that whole family as natural successors to CartPole or MountainCar.
+[S] And the complaint is what, that they are too hard?
+[G] The complaint is that they are integrated. Performing well requires many core capabilities at once, so a high score is uninformative about mechanism. A strong Atari number does not tell you the agent has good memory, or good exploration, or neither. It tells you the agent is good at Atari.
+[O] Whereas the theory side already had targeted unit tests.
+[G] It did, and the paper names them. RiverSwim for exploration. Taxi for temporal abstraction. But the argument there is that those are typically fixed size, one off constructions, without a shared methodology for running an arbitrary agent against them and scoring it the same way every time. The paper cites the evaluation protocol drift in the Arcade Learning Environment as the cautionary case, and says this has become a major problem for many benchmark suites.
+[S] So the pitch is a standard, not a challenge.
+[G] The pitch is an M NIST for reinforcement learning. Those are the paper's own words for it. A shared, versioned library of small targeted experiments that runs identically for any agent and emits the same kind of score. The closest analogue the authors reach for is not in machine learning at all, it is the Mixed Integer Programming Library, where the benchmark instances encode known problem properties and running on them is a normal part of proposing a new algorithm.
+[O] All right, the method. What is an experiment, formally, in this thing?
+[G] Three parts. A fixed set of environments determined by some parameter, typically a size. A fixed interaction regime, meaning a set number of episodes. And a fixed analysis that maps the agent's logged behaviour to results and plots, including one score in the interval zero to one. The paper calls that score quick and dirty, in those words, and it means it. The score is for comparison at a glance. The detail lives in the plots behind it.
+[S] What stops the library from accumulating whatever anybody feels like contributing?
+[G] Five stated qualities, and every current or future experiment is supposed to satisfy all five. Targeted, meaning performance corresponds to a key issue in R L. Simple, meaning it strips away confounding factors. Challenging, meaning it pushes agents past the normal range. Scalable, meaning it reveals a scaling trend rather than pass or fail. And fast, meaning launch to results in under thirty minutes on a standard C P U.
+[O] The fast constraint is doing a lot of quiet work there.
+[G] It is, and there is a footnote that makes it concrete. At August twenty nineteen pricing, a full b suite evaluation for their D Q N implementation cost under six dollars. That is one agent, one implementation, one cloud setup, at one moment in time. But it tells you what class of thing this is meant to be.
+[S] There is a second design constraint I want on the record, because it explains the whole architecture.
+[G] Say it.
+[S] Everything is behavioural. The suite only measures what is observable in the environment. Nothing internal to the agent.
+[G] That is right, and it is the load bearing choice. Because the analysis never looks inside the agent, you can drop any agent from any codebase into the run loop and the logging is identical. They ship a dm env implementation, an OpenAI Gym wrapper, and worked examples running through OpenAI Baselines and Dopamine. If your network is hardcoded for a particular observation spec, the environments will interpolate to that spec so you do not have to touch your agent at all.
+[O] Now the counts, because I got these wrong on my first read and I suspect most people do.
+[G] They are two different numbers and you have to keep them apart. Appendix A specifies thirteen named environment designs. Five basic tasks, three exploration tasks, three credit assignment tasks, two memory tasks. That is the design inventory.
+[S] And the twenty three?
+[G] Twenty three is the number of distinctly named scored instances that come out the other end, and it is larger because the five basic tasks get run three times over. Once plain. Once with noise. Once with reward rescaling. Five plus five plus five, plus the three exploration, three credit assignment and two memory tasks, gives twenty three bars on the per experiment chart.
+[O] So the noise and scale families are not new environments at all.
+[G] Correct. They are the same five basic environments with the reward channel perturbed. And the seed accounting there matters. Each basic task gets twenty seeds. For the noise family, those twenty seeds are allocated across five levels of Gaussian reward noise, standard deviations of zero point one, zero point three, one, three and ten, at four seeds each. For the scale family, the same twenty seeds are allocated across five reward multipliers, one hundredth, one tenth, one, ten and one hundred, again four seeds each.
+[S] Four seeds. Hold that thought, I am coming back to it.
+[O] And those twenty three roll up into how many axes?
+[G] Seven capability categories on the radar plot. Basic, generalization, noise, scale, exploration, credit assignment, memory. And there is a small subtlety worth flagging, because it comes up later. Generalization is not one of Appendix A's sections. There is no generalization family of environments. It is a tag attached to environments that live in other families.
+[O] Take us through the two worked examples, because they are the best part of the paper.
+[G] Memory length first. It is a stylized T maze parameterized by a length. The agent sees a binary context bit at the first step only. Every later observation shows zero. At the final step it has to reproduce that bit as its action, for a reward of plus or minus one. Nothing else in the episode pays anything.
+[S] So it is a pure retention test with the horizon as the knob.
+[G] Exactly. The main text sweeps lengths from one to one hundred, exponentially spaced, and looks at average regret after ten thousand episodes. The summary score in the main text is the percentage of runs whose average regret comes in under seventy five percent of what a uniformly random policy achieves.
+[O] And deep sea?
+[G] A grid, size by size, one hot state encoding. The agent starts top left and descends one row per timestep, so an episode is exactly as long as the grid is deep. In every cell there is a fixed but randomly assigned mapping between the two actions and the directions left and right. Moving right costs a hundredth divided by the size, at every step. Moving left costs nothing. But if the agent goes right at every single step of the episode, it gets an extra plus one.
+[S] So the small negative reward actively points away from the only thing that pays.
+[G] That is one of the two difficulties, and the paper says so directly. Following the gradient of small intermediate rewards leads the agent away from the optimal policy. The second difficulty is the search space. A uniformly random policy reaches the rewarding corner with probability one over two to the power of the size. At size fifty that is not a small probability, it is a hopeless one.
+[O] What is the scoring rule there?
+[G] The main text runs sizes ten, twelve, and so on up to fifty, for ten thousand episodes, and scores the percentage of runs whose average regret drops below zero point nine faster than the two to the size episodes dithering would need. So the reference is not optimal play, it is random search, and the question is whether the agent beats it by an exponential margin.
+[S] Rosalie, I want to slow down on scoring, because you have now described two different rules and I think that distinction gets flattened every time somebody summarizes this paper.
+[G] You are right to. In Appendix A's tables, the overwhelming majority of experiments are scored continuously, as regret normalized between random and optimal and mapped onto zero to one. Only three entries are scored as a percentage of runs. Deep sea and stochastic deep sea, on the regret criterion I just described. And cartpole swingup, which is scored as the percentage of runs with average return above zero.
+[S] Three out of twenty three.
+[G] Three. And for those three the paper never states how many runs each percentage is computed over. The four seeds figure is real, but it belongs to the noise and scale variants. It does not license any statement about the denominators in the exploration family.
+[O] Let us get to results. Memory length, three baselines.
+[G] The recurrent actor critic greatly outperforms feedforward D Q N and Bootstrapped D Q N, in the paper's phrasing. And the failure of the other two is total. The paper says both are unable to learn anything for length greater than one, they lack functioning memory. That is not a gradual degradation, it is a floor.
+[S] And the recurrent agent, does it just win?
+[G] No, and this is the single best result in the paper. It performs well for all lengths up to thirty and is essentially random for all lengths above thirty, with what the authors call quite a sharp cutoff. And they have the mechanism. The recurrent agent was trained by backpropagation through time with length thirty.
+[O] The measurement recovered the training hyperparameter.
+[G] It recovered the scaling limit the training procedure implies, which is the paper's own way of putting it. That is what a diagnostic is supposed to do. You get a number, and behind the number there is a curve, and the curve has a knee, and the knee has a cause you can name.
+[S] I will give them that one without argument. It is falsifiable, it is mechanistic, and no Atari score in the world produces it.
+[O] Deep sea flips the ordering, doesn't it?
+[G] Completely. Only Bootstrapped D Q N, which was developed for efficient exploration, scores well. D Q N and the recurrent actor critic fail to solve any tested size up to fifty inside the ten thousand episode budget. Not some sizes. None of them.
+[O] And Bootstrapped D Q N's scaling?
+[G] Episodes to solve rise gradually with size and stay far below the dashed two to the size reference curve the authors plot for comparison. On the strength of how regular that progression looks, they suggest the algorithm might continue to scale past fifty. That is a suggestion, explicitly hedged, and they did not test it.
+[S] Good. Because that is exactly the sentence that would get repeated as a finding.
+[G] It should not be. The tested range ends at fifty.
+[O] Then there is the full suite run, all twenty three experiments, four agents.
+[G] Appendix C. Random, D Q N, Bootstrapped D Q N, and the recurrent actor critic. And I want to be careful about register here, because there are no printed values. The radar and the bar chart have a zero to one axis with gridlines, and no numbers on the marks. So the honest statements are ordinal ones, and fortunately the authors wrote their own.
+[S] Quote them, then, rather than reading bar heights.
+[G] Four bullets. Random performs uniformly poorly, confirming the scores are working as intended, which is the sanity check the whole thing rests on. D Q N performs well on basic tasks, and quite well on credit assignment, generalization, noise and scale, but extremely poorly across memory and exploration, and they name the causes. The feedforward network has no mechanism for memory, and epsilon greedy action selection at five percent is inefficient exploration.
+[O] And the other two.
+[G] Bootstrapped D Q N is, in their words, mostly identically to D Q N, except for exploration where it greatly outperforms, which matches what that algorithm was designed to do. And the recurrent actor critic typically performs worse than either D Q N variant on everything apart from memory, where it is the only one of the three able to beat random.
+[S] So the capability profile separates exactly along the lines the architectures predict.
+[G] On these three agents, yes. Which is the strongest available evidence that the axes measure what they are named after, and also the narrowest possible version of that evidence. We should come back to that.
+[O] There are two more appendices that I think get overlooked, and they are the ones that actually show the intended workflow.
+[G] They are the better demonstration, honestly. Appendix D takes one agent, D Q N, and varies only the optimizer, comparing stochastic gradient descent, R M S Prop and Adam. The finding is that both R M S Prop and Adam perform better than S G D in every category. Adam slightly outperforms R M S Prop in most categories, but the paper calls that difference much more minor. And S G D performs particularly badly on environments that require generalization, or scale, or both.
+[S] Was the learning rate tuned per optimizer, or is this a fixed rate comparison that flatters the adaptive methods?
+[G] It was tuned, over three values, one tenth, one hundredth and one thousandth. But note the tuning objective. They tuned each learning rate to optimize performance on the basic tasks, then reported category level conclusions across the whole suite, including the generalization and scale categories where S G D looks worst. Everything else was held at default.
+[S] So the conclusion about scale is drawn on hyperparameters selected somewhere else. That is not fatal, it is a worked example, but it is the sort of thing a reader inherits without noticing.
+[G] Agreed, and it is not flagged in the appendix.
+[O] And Appendix E is the ensemble sweep.
+[G] Bootstrapped D Q N with prior networks, ensemble sizes one, three, ten and thirty. Increasing the ensemble improves b suite performance across the board, but with what they call significantly decreasing returns, so that ensemble thirty does not perform much better than size ten. The gains are most extreme in the exploration tasks, where ensembles smaller than ten cannot solve large deep sea instances but larger ensembles solve them reliably.
+[O] That is a real practitioner result. Ten is the knee.
+[G] With one honest caveat they include. Even at ensemble size thirty, their implementation does not completely solve every cartpole swingup instance, and they speculate that may be an optimization instability rather than an exploration failure. They flag it as a hypothesis.
+[S] Right. My turn. Let me put the deflationary case in order, and I want you to adjudicate each one.
+[O] Before you do, let me put the optimistic case, because it is not just the memory length curve.
+[S] Go.
+[O] Three things. First, the reframing. Asking why does my agent fail at this capability instead of how good is my agent overall is the right question, and this paper operationalized it cheaply enough that anyone can ask it. Under thirty minutes per environment, under six dollars for a full sweep on one agent. Second, the workflow appendices, which show you diagnosing an optimizer choice and an ensemble size, not crowning a winner. Third, the distribution mechanism. They auto generate a one page b suite report as a LaTeX appendix that drops into I C L R, I C M L or NeurIPS formatting. They are trying to make capability reporting a default habit, not a paper.
+[S] All of which I grant. Now. One. There is no uncertainty quantification anywhere in this paper. Not a confidence interval, not a standard error, not a seed count sensitivity analysis. On the continuous scores, on the percentage scores, on the radar, nowhere. And several of those scores rest on four seeds per condition.
+[G] That one stands, in full. It is the cleanest gap in the paper, and there is no counter argument in the text. For a project whose stated purpose is to collect clear, informative and scalable problems and to standardize measurement, shipping one number per experiment with no dispersion around it is a real omission, not a stylistic choice.
+[S] Two. The paper says b suite aims to remove all confounds from the core agent capabilities of interest. But the appendix's own bookkeeping contradicts that. M NIST is tagged basic and generalization. Cartpole and Mountain Car are each tagged basic, credit assignment and generalization. Stochastic deep sea is tagged exploration and stochasticity. Both umbrella experiments are tagged credit assignment and stochasticity.
+[G] Also stands, though I would state the consequence more narrowly than you probably want. It does not undermine the diagnostic approach. It means a given radar axis can be a blend rather than a pure read of the capability printed on it, because the experiments feeding that axis are, by the authors' own tags, multi issue. And remember what I said earlier about generalization not having its own family. That axis in particular is assembled entirely from tags on other people's environments.
+[O] Rosalie, is that not just an honest admission rather than a contradiction? They tagged them. They could have hidden it.
+[G] That is a fair push, and yes, the transparency is real. But the sentence about removing all confounds is a strong claim, and the tags are the paper's own evidence against it. Both things are in the same document.
+[S] Three. The internal seams. And I want these stated precisely because they are small.
+[G] There are three, and all three are checkable. First, Appendix A's tables list the issues tag for both memory experiments, memory length and memory bits, as credit assignment, not memory, even though they sit under a section headed Memory whose introduction describes them as memory tests, and even though the per experiment bar chart colours both of them as the memory category. Nothing in the text says which is intended.
+[O] Second?
+[G] The deep sea sweep is described two ways in the same paper. The main text says sizes ten, twelve, and so on up to fifty. Appendix A's table entry for the same experiment says size in the range five to fifty. Different lower bound, coarser description of the step.
+[S] And the third is the one that actually changes a number.
+[G] It does. Memory length runs for ten thousand episodes in the main text and one thousand episodes in the appendix table for the same experiment. A factor of ten. And that same appendix entry scores it continuously, as normalized regret, rather than the percentage of runs the main text describes. So the scoring rule for that experiment is also inconsistent between the two descriptions.
+[O] That is worse than a typo.
+[G] It is a documentation inconsistency in a paper whose contribution is standardized specification. I would not call any one of them a large error. Collectively they are seams in exactly the surface that is supposed to be seamless. And there is a fourth, smaller one, purely typographic. Appendix D's commentary points the reader to Figure eleven for the cartpole result, but Appendix D's own bar chart is labelled Figure nine. Figure eleven belongs to Appendix E, the ensemble report.
+[S] Four. The baselines. Three agents, and I initially wanted to say they are all old, but that is not the right criticism.
+[G] It is not, and I am glad you dropped it. D Q N is twenty fifteen, the actor critic is twenty sixteen, and Bootstrapped D Q N with randomized prior functions is twenty sixteen and twenty eighteen. The prior functions work landed months before this paper. These are contemporary implementations.
+[O] So what is the criticism?
+[G] Breadth, not vintage. It is one narrow lineage. Two feedforward D Q N variants plus one recurrent actor critic. No model based agent. No distributional agent. No policy gradient method at scale. So the claim that these seven axes cleanly separate capabilities has been demonstrated on a family of agents whose differences are already known in advance, and which were chosen partly because their differences are known.
+[S] Which makes it a consistency check, not a validation.
+[G] I would accept that phrasing, with the paper's own caveat attached. It introduces these appendices as examples of specific investigations using b suite, not as a definitive baseline study, so on my read they are not claiming a validation and should not be held to one. But a reader who wants to trust the radar for a genuinely novel architecture is extending the claim past what is shown.
+[O] Give the paper its due on scope, though, because I think it is unusually clean here.
+[G] It is, and I will. It states it is not a leaderboard to climb. It says the authors do not claim to capture all, or even most, of the important issues in R L. And in a footnote it names its own hole. A notable omission from the twenty nineteen release is the lack of any targeted experiments for hierarchical reinforcement learning, and it invites the community to fill that in. Benchmark papers do not usually print their own missing category.
+[S] I score that honestly. The scope critique is pre conceded. The uncertainty critique is not conceded anywhere, and it is the one I would actually hold against it.
+[O] What does this change downstream, if it holds?
+[G] The durable idea is that an evaluation's output can be a shaped profile rather than a scalar, and that the profile is only trustworthy if each axis is targeted enough to have a mechanism behind it. The memory length curve is the existence proof. A score of a certain height means nothing on its own. A cutoff at length thirty that matches a truncation window of thirty is a diagnosis.
+[O] And the governance piece. They committed to a b suite committee meeting annually at the NeurIPS conference to add or replace experiments. A living, curated suite rather than a frozen dataset.
+[G] That is the design intent, stated in the paper's future iterations section. Whether that committee sustained itself over the following years is outside what this document can tell you.
+[S] The transfer to how we evaluate language models is almost too neat. Capability radars instead of one aggregate. Cheap targeted unit tests instead of one expensive integrated challenge. And the same failure mode waiting at the end of it, which is that people read the shape of the profile as ground truth without asking whether each axis is measuring one thing.
+[G] And without asking how many runs it rests on. That question is older than this paper and it is still not answered here.
+[O] Takeaways. Rosalie, the paper's.
+[G] Thirteen environment designs, twenty three scored instances, seven capability axes, every score in zero to one, and the deliverable is the profile, not a rank. The authors' own claim is that this is a research process rather than a final offering, and the paper reads like one.
+[O] Mine. The memory length result is the argument. A cutoff at thirty that matches backpropagation through time at thirty is what an evaluation is supposed to produce, and no integrated benchmark would have produced it.
+[S] Mine. Take the methodology and skip the instantiation. Three agents from one lineage, no dispersion on any score, and four internal inconsistencies about what is being run and how it is scored. This is a proof of concept for diagnosis, not evidence that each of those seven axes isolates the thing written on it.
+[O] The full writeup, with the figures and the appendix tables we have been quoting, is on the litsearch site. Thanks Rosalie.
+[G] My pleasure.
