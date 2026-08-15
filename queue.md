@@ -352,3 +352,4 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] pagnoni-2021-frank
 - [x] hendy-2023-gpt-mt
 - [x] lin-2024-vqascore
+- [x] huang-2025-t2i-compbench
