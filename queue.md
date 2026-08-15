@@ -350,3 +350,4 @@ Seed this from the litsearch content dir or your Obsidian paper-queue tags.
 - [x] zhu-2024-dyval
 - [x] hu-2020-xtreme
 - [x] pagnoni-2021-frank
+- [x] hendy-2023-gpt-mt
